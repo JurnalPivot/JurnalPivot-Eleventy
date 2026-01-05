@@ -1,0 +1,15 @@
+---
+layout: base.njk
+cssFile: special.css  {# Tells base.njk to load 'special.css' #}
+---
+<!-- Maybe this one has no nav, or a full-screen video header? -->
+<div class="immersive-hero">
+    <h1>SPECIAL FEATURE: {{ title }}</h1>
+</div>
+
+<main class="wide-content">
+    {{ content | safe }}
+</main>
+
+<!-- No footer for this special design? Or a custom one? -->
+<footer class="minimal-footer">Special © 2025</footer>

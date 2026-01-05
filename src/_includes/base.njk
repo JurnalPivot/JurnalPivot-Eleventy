@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <!-- GLOBAL CSS -->
+    <link rel="stylesheet" href="/css/global.css">
+    
+    <!-- Using a specific CSS based on the page wanted to be load -->
+    {% if cssFile %}
+      <link rel="stylesheet" href="/css/{{ cssFile }}">
+    {% endif %}
+</head>
+<body>
+    
+    <!-- Content from the sub-layouts will go here -->
+    {{ content | safe }}
+
+    <!-- Global Scripts -->
+    <script src="/js/main.js"></script>
+</body>
+</html>

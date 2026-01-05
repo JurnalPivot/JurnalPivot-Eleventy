@@ -1,0 +1,173 @@
+/* =========================================
+   ARTICLE PAGE STYLES
+   ========================================= */
+
+/* --- Header & Meta --- */
+.article-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 3rem auto 2rem auto;
+}
+
+.article-tags {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.tag {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 4px 12px;
+    border-radius: 50px;
+    color: #666;
+    font-weight: 600;
+}
+
+.article-title {
+    font-family: var(--font-serif);
+    font-size: 3rem; /* Bold and large */
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.article-meta {
+    font-size: 0.95rem;
+    color: #777;
+    font-family: var(--font-sans);
+}
+
+.separator { margin: 0 8px; }
+
+/* --- The Wall of Text --- */
+.article-content {
+    max-width: 680px; /* Narrower for better reading experience */
+    margin: 0 auto 4rem auto;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.article-content p { margin-bottom: 1.5rem; }
+
+.article-content h2 {
+    font-family: var(--font-sans);
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.article-content .lead-paragraph {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.article-content blockquote {
+    border-left: 4px solid var(--accent-color);
+    margin: 2rem 0;
+    padding-left: 1.5rem;
+    font-style: italic;
+    color: #555;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+[data-theme="dark"] .article-content blockquote { color: #ccc; }
+
+/* --- Writer's Profile Box --- */
+.author-box {
+    max-width: 680px;
+    margin: 0 auto 5rem auto;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.author-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.author-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.author-bio {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+}
+
+.author-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+/* --- Related Articles --- */
+.related-section {
+    border-top: 1px solid var(--border-color);
+    padding-top: 3rem;
+    margin-bottom: 4rem;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+    gap: 1.5rem;
+}
+
+.related-card {
+    display: block;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.related-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color);
+}
+
+.related-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.related-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+/* --- Responsive for Mobile --- */
+@media (max-width: 700px) {
+    .article-title { font-size: 2rem; }
+    .author-box { flex-direction: column; text-align: center; }
+    .related-grid { grid-template-columns: 1fr; } /* Stack on mobile */
+}

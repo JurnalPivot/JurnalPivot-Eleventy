@@ -1,1 +1,3 @@
-src\_includes\baseFake.njk
+node_modules/
+_site/
+.DS_Store

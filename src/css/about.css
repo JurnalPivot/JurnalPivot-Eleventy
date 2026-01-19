@@ -1,0 +1,223 @@
+/* =========================================
+   ABOUT PAGE STYLES
+   ========================================= */
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem 1.5rem;
+}
+
+/* 1. Header */
+.about-header {
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.eyebrow {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.about-header h1 {
+    font-family: var(--font-serif, serif);
+    font-size: 3.5rem;
+    font-weight: 400; /* Lighter weight looks more elegant */
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--text-color, #333);
+}
+
+.header-line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color, #2563eb);
+    border: none;
+    margin: 0 auto;
+}
+
+/* 2. The Story (Prose) */
+.about-story {
+    margin-bottom: 5rem;
+}
+
+.lead {
+    font-size: 1.4rem;
+    font-family: var(--font-serif, serif);
+    line-height: 1.6;
+    color: var(--text-color, #333);
+    margin-bottom: 2rem;
+}
+
+.about-story p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+/* 3. Editors Section */
+.editors-section {
+    margin-bottom: 6rem;
+}
+
+.section-label {
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border-color, #eee);
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.section-label h3 {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-label p {
+    font-family: var(--font-serif, serif);
+    font-style: italic;
+    color: #777;
+    font-size: 0.95rem;
+}
+
+/* The Grid */
+.editors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+}
+
+/* The Editor Card */
+.editor-card {
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Link wrapper makes the whole card clickable for future profile pages */
+.editor-link-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: var(--card-bg, #f9f9f9);
+    height: 100%; /* Equal height */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.editor-link-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* The Monogram (The Anonymous Face) */
+.editor-monogram {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-serif, serif);
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.editor-info h4 {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 1.1rem;
+    color: var(--text-color, #333);
+    margin-bottom: 0.2rem;
+}
+
+.role {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent-color, #2563eb);
+    display: block;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.editor-quote {
+    font-family: var(--font-serif, serif);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+    margin-top: auto; /* Pushes quote to bottom if card stretches */
+}
+
+/* 4. Correspondence (The Box) */
+.correspondence-box {
+    background-color: var(--text-color, #333); /* Dark background for contrast */
+    color: white;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.correspondence-content h3 {
+    font-family: var(--font-serif, serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.correspondence-content p {
+    color: #ccc;
+    max-width: 500px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.6;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: white;
+    color: #333;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #eee;
+}
+
+.btn-text {
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.btn-text:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .about-header h1 { font-size: 2.5rem; }
+    .contact-links { flex-direction: column; }
+    .editors-grid { grid-template-columns: 1fr; }
+}

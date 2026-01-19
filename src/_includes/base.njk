@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <!-- GLOBAL CSS -->
-    <!-- Loads for common reoccuring elements (header, footer, etc) -->
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <!-- All Page CSS Style -->
     <link rel="stylesheet" href="/css/global.css">
-    
     <!-- Using a specific CSS based on the page wanted to be load -->
     {% if cssFile %}
       <link rel="stylesheet" href="/css/{{ cssFile }}">

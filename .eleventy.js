@@ -1,5 +1,16 @@
 module.exports = function(eleventyConfig) {
-    // Copy these folders/files directly to the output without modifying them
+  // 1. Adding a filter block
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
+    // If the date is missing, return empty string
+    if (!dateObj) return ""; 
+    
+    // Convert to Indonesian format
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' })
+      .setLocale('id') 
+      .toFormat("d MMMM yyyy");
+  });
+
+    // 2. Passthrough copy for static assets
     eleventyConfig.addPassthroughCopy("src/css");
     eleventyConfig.addPassthroughCopy("src/js");
     eleventyConfig.addPassthroughCopy("src/images");

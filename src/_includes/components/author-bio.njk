@@ -1,0 +1,13 @@
+{% set currentAuthor = authors[author] %}
+
+{% if currentAuthor %}
+<section class="author-section">
+    <div class="author-grid">
+        <img src="{{ currentAuthor.photo }}" alt="{{ author }}" class="author-photo">
+        <div>
+            <h3>About {{ author }}</h3>
+            <p>{{ currentAuthor.bio }}</p>
+        </div>
+    </div>
+</section>
+{% endif %}

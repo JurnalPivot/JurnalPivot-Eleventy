@@ -1,0 +1,20 @@
+<section class="related-section">
+    <h3>Read Next</h3>
+    <div class="related-grid">
+        {% set counter = 0 %}
+        {% for post in collections.articles %}
+            <!-- Logic: Same category AND not the current page AND less than 3 posts -->
+            {% if post.data.category == category and post.url != page.url and counter < 3 %}
+                
+                <div class="related-card">
+                    <a href="{{ post.url }}">
+                        <h4>{{ post.data.title }}</h4>
+                        <p>By {{ post.data.author }}</p>
+                    </a>
+                </div>
+                
+                {% set counter = counter + 1 %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

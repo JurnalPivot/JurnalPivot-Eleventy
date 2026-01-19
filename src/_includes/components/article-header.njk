@@ -1,0 +1,10 @@
+<header class="article-header">
+    <span class="category-tag">{{ category }}</span>
+    <h1>{{ title }}</h1>
+    <div class="meta">
+        <span>By {{ author }}</span> • <span>{{ date | readableDate }}</span>
+    </div>
+    {% if image %}
+    <img src="{{ image }}" alt="{{ title }}" class="featured-image">
+    {% endif %}
+</header>

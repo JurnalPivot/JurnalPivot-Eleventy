@@ -173,7 +173,6 @@
 .correspondence-box {
     /* We want this box to stay dark even in light mode, 
        but in Dark Mode, we might want it slightly different */
-    background-color: var(--text-color); 
     color: var(--bg-color); /* Inverts colors based on theme */
     padding: 3rem;
     border-radius: 12px;

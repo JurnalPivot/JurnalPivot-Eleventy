@@ -1,0 +1,215 @@
+/* =========================================
+   SUBMISSION PAGE STYLES
+   ========================================= */
+
+.submission-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 5rem 1.5rem;
+}
+
+/* --- 1. Header (Shared DNA with About Page) --- */
+.page-header {
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.eyebrow {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.7;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.page-header h1 {
+    font-family: var(--font-serif, serif);
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+}
+
+.header-line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--accent-color);
+    border: none;
+    margin: 0 auto 2rem auto;
+}
+
+.lead {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    font-family: var(--font-serif, serif);
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+/* --- 2. The Guidelines (Prose) --- */
+.guideline-content {
+    margin-bottom: 5rem;
+}
+
+.guideline-block {
+    margin-bottom: 3rem;
+}
+
+.guideline-block h3 {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-color); /* Highlight headers in blue */
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* List Styling */
+.guideline-block ul, 
+.guideline-block ol {
+    font-family: var(--font-serif, serif);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-color);
+    padding-left: 1.5rem;
+}
+
+.guideline-block li {
+    margin-bottom: 0.8rem;
+    padding-left: 0.5rem;
+}
+
+/* Strong emphasis */
+.guideline-block strong {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Code snippet style for .docx */
+code {
+    background-color: var(--card-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+    border: 1px solid var(--border-color);
+}
+
+/* THE REQUESTED HYPERLINK STYLE */
+.guideline-block a {
+    color: var(--accent-color); /* Blue */
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s;
+}
+
+.guideline-block a:hover {
+    opacity: 0.8;
+}
+
+/* --- 3. Submission Card (The CTA) --- */
+.submission-card {
+    background-color: var(--card-bg); /* Adapts to Dark Mode */
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.card-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.submission-card h3 {
+    font-family: var(--font-serif, serif);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.submission-card p {
+    font-family: var(--font-sans, sans-serif);
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+/* Email Details Box */
+.email-details {
+    background-color: var(--bg-color); /* Contrast against card-bg */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: left; /* Align text left for readability */
+    margin-bottom: 2rem;
+}
+
+.detail-row {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.label {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--text-color);
+    opacity: 0.6;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.5px;
+}
+
+.value {
+    font-family: var(--font-serif, serif);
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.email-link {
+    font-family: var(--font-serif, serif);
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    display: inline-block;
+    width: fit-content;
+    transition: border-color 0.2s;
+}
+
+.email-link:hover {
+    border-bottom-color: var(--accent-color);
+}
+
+/* Review Note */
+.review-note {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .page-header h1 { font-size: 2.5rem; }
+    .submission-card { padding: 1.5rem; }
+    .email-details { padding: 1.5rem; }
+    .email-link { font-size: 1.1rem; word-break: break-all; }
+}

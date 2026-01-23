@@ -190,6 +190,7 @@
     font-family: var(--font-serif, serif);
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: white;
 }
 
 .correspondence-content p {
@@ -197,6 +198,7 @@
     max-width: 500px;
     margin: 0 auto 2rem auto;
     line-height: 1.6;
+    color: white;
 }
 
 .contact-links {

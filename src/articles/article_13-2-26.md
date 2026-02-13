@@ -7,7 +7,7 @@ tags: articles
 layout: layouts/article.njk
 ---
 
-Apa makna permusuhan dalam politik dewasa ini? Masa kiwari republik ini selalu mengandaikan bahwa satu bangsa harus bersaudara. Mengapa ini bermasalah? Apa maknanya bagi kita sebagai warga negara?
+***Apa makna permusuhan dalam politik dewasa ini? Masa kiwari republik ini selalu mengandaikan bahwa satu bangsa harus bersaudara. Mengapa ini bermasalah? Apa maknanya bagi kita sebagai warga negara?***
 
 ARTI dari politik yang paling vulgar adalah ini: suatu ruang untuk mendikotomikan kawan dan lawan. Tentu saja, definisi semacam ini boleh diduga bersemi dari unsur Schmittian yang menopang rezim Nazi di Jerman ketika Hitler berkuasa. Memang betul, ia adalah *Kronjurist*.[^1] Tetapi, tulisannya mengenai yang-politis adalah suatu upaya mengejawantahkan politik yang melampaui stabilitas. Bagi Schmitt, persoalannya sederhana: nyaris seluruh aspek, dari mulai ekonomi, budaya, hingga agama membawa suatu aspek politis yang inheren, yaitu dikotomi antara kawan dan lawan. Pengejawantahannya bisa terlihat ketika ada perilaku yang mencoba menetapkan eksklusivisme. Schmitt mengeksplisitkan makna politis untuk menciptakan *hostis* dan *imicus*. Keduanya adalah istilah Yunani yang merujuk pada ‘musuh politik’ dan ‘musuh pribadi’. Ada kalanya, pendefinisian radikal ini membuahkan *scholarship* yang begitu penting untuk memberikan pemahaman mengenai politik dan demokrasi. 
 

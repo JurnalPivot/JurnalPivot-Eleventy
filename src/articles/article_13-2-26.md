@@ -1,5 +1,5 @@
 ---
-title: "Merehabilitas Politik"
+title: "Merehabilitasi Politik"
 date: 2026-02-13
 author: "Jonathan K."
 category: "Politik"

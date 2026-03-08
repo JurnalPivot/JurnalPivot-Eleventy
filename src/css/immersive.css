@@ -1,0 +1,50 @@
+/* Default text styling (so you don't lose readability) */
+.immersive-article p {
+    max-width: 680px;
+    margin: 0 auto 1.5rem auto;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    background: rgba(255, 255, 255, 0.9); /* Readability over video */
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* THE SCROLLY CONTAINER */
+.scrolly-container {
+    position: relative;
+    /* Height is determined by how much text you have */
+}
+
+/* THE BACKGROUND MEDIA (Video/Image) */
+.scrolly-background {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Full screen height */
+    width: 100%;
+    z-index: 1; /* Behind the text */
+    overflow: hidden;
+}
+
+.scrolly-background img,
+.scrolly-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures it fills screen */
+}
+
+/* THE FOREGROUND TEXT */
+.scrolly-foreground {
+    position: relative;
+    z-index: 2; /* On top of video */
+    padding-bottom: 50vh; /* Space to scroll */
+    margin-top: -100vh; /* Pull text up to overlap the sticky video */
+    padding-top: 50vh; /* Start text lower down */
+}
+
+.step {
+    min-height: 80vh; /* Each text block takes scrolling time */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

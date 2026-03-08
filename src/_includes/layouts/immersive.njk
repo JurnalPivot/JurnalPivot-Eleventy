@@ -1,0 +1,23 @@
+---
+layout: base.njk
+cssFile: immersive.css
+---
+
+<!-- 
+  No .prose class here! 
+  We want full control over the width.
+-->
+<article class="immersive-article">
+    
+    <!-- We still want the standard header -->
+    {% include "components/article-header.njk" %}
+
+    <!-- The Content -->
+    {{ content | safe }}
+
+    <!-- Footer Area -->
+    <hr class="divider">
+    {% include "components/author-bio.njk" %}
+    {% include "components/related-posts.njk" %}
+
+</article>

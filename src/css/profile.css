@@ -1,0 +1,363 @@
+/* =========================================
+   AUTHOR PROFILE PAGE STYLES
+   ========================================= */
+
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem 1.5rem;
+}
+
+/* --- Breadcrumb --- */
+.profile-breadcrumb {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.back-link {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.back-link:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+/* --- Hero --- */
+.profile-hero {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.profile-monogram {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: var(--font-serif, serif);
+    font-weight: bold;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.profile-identity {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-role {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.profile-name {
+    font-family: var(--font-serif, serif);
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+.profile-quote {
+    font-family: var(--font-serif, serif);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text-color);
+    opacity: 0.65;
+    line-height: 1.5;
+}
+
+/* --- Divider --- */
+.profile-divider {
+    border: 0;
+    border-top: 1px solid var(--border-color, #e5e5e5);
+    margin: 2.5rem 0;
+}
+
+/* --- Body Layout (two-column) --- */
+.profile-body {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 4rem;
+    margin-bottom: 1rem;
+    align-items: start;
+}
+
+/* --- Bio Section --- */
+.profile-section-label {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    opacity: 0.5;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.profile-bio p {
+    font-family: var(--font-serif, serif);
+    font-size: 1.15rem;
+    line-height: 1.85;
+    color: var(--text-color);
+}
+
+/* --- Sidebar --- */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.profile-card {
+    background: var(--card-bg, #f9f9f9);
+    border: 1px solid var(--border-color, #e5e5e5);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+}
+
+.sidebar-label {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-color);
+    opacity: 0.5;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.social-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.social-link {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.88rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border-color, #e5e5e5);
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.social-link:last-child {
+    border-bottom: none;
+}
+
+.social-link:hover {
+    color: var(--accent-color);
+}
+
+.social-link-label {
+    font-weight: 500;
+}
+
+.social-link-arrow {
+    font-size: 0.8rem;
+    opacity: 0.4;
+    transition: opacity 0.2s, transform 0.2s;
+    display: inline-block;
+}
+
+.social-link:hover .social-link-arrow {
+    opacity: 1;
+    transform: translate(2px, -2px);
+}
+
+/* --- Email copy button --- */
+.email-copy-btn {
+    /* Reset button defaults */
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    /* Inherit the social-link row layout exactly */
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.88rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid var(--border-color, #e5e5e5);
+    transition: color 0.2s;
+    position: relative;
+}
+
+.email-copy-btn:last-child {
+    border-bottom: none;
+}
+
+.email-copy-btn:hover {
+    color: var(--accent-color);
+}
+
+/* The address — hidden by default, slides in on hover */
+.email-copy-hint {
+    font-size: 0.78rem;
+    font-style: normal;
+    font-family: monospace;
+    color: var(--text-color);
+    opacity: 0;
+    max-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: opacity 0.2s, max-width 0.3s ease;
+    margin-left: 0.75rem;
+}
+
+.email-copy-btn:hover .email-copy-hint {
+    opacity: 0.6;
+    max-width: 240px;
+}
+
+/* Confirmed state — JS adds .copied class to the button */
+.email-copy-btn.copied {
+    color: var(--accent-color);
+}
+
+.email-copy-btn.copied .email-copy-hint {
+    opacity: 1;
+    max-width: 200px;
+    color: var(--accent-color);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.email-copy-btn.copied .social-link-arrow {
+    opacity: 1;
+}
+
+/* --- Articles by This Author --- */
+.profile-articles {
+    margin-top: 1rem;
+}
+
+.profile-articles-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.profile-article-card {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border-color, #e5e5e5);
+    transition: background 0.15s;
+}
+
+.profile-article-card:first-child {
+    border-top: 1px solid var(--border-color, #e5e5e5);
+}
+
+.profile-article-card .card-date {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.82rem;
+    color: var(--text-color);
+    opacity: 0.5;
+    white-space: nowrap;
+}
+
+.profile-article-card h3 {
+    font-family: var(--font-serif, serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-color);
+}
+
+.profile-article-card h3 a {
+    color: var(--text-color);
+    transition: color 0.2s;
+}
+
+.profile-article-card h3 a:hover {
+    color: var(--accent-color);
+}
+
+.profile-article-card .card-category {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-color);
+    opacity: 0.45;
+    white-space: nowrap;
+}
+
+.no-articles {
+    font-family: var(--font-serif, serif);
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.6;
+    padding: 1.5rem 0;
+}
+
+.not-found {
+    font-family: var(--font-serif, serif);
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.6;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 680px) {
+    .profile-hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .profile-name {
+        font-size: 2.2rem;
+    }
+
+    .profile-body {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .profile-article-card {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+
+    .profile-article-card .card-category {
+        display: none;
+    }
+}
+
+/* --- Dark Mode --- */
+[data-theme="dark"] .profile-card {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}

@@ -2,12 +2,13 @@
 
 {% if currentAuthor %}
 <section class="author-section">
-    <div class="author-grid">
+    <a href="/pages/profile-{{ currentAuthor.slug }}" class="author-grid author-grid-link">
         <img src="{{ currentAuthor.photo }}" alt="{{ author }}" class="author-photo">
         <div>
             <h3>Tentang {{ author }}</h3>
             <p>{{ currentAuthor.bio }}</p>
         </div>
-    </div>
+        <span class="author-profile-cta">Lihat Profil →</span>
+    </a>
 </section>
 {% endif %}

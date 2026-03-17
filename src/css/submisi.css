@@ -29,7 +29,7 @@
 .page-header h1 {
     font-family: var(--font-serif, serif);
     font-size: 3.5rem;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.1;
     margin-bottom: 2rem;
     color: var(--text-color);
@@ -46,11 +46,11 @@
 .lead {
     max-width: 600px;
     margin: 0 auto;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-family: var(--font-serif, serif);
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--text-color);
-    opacity: 0.9;
+    opacity: 0.85;
 }
 
 /* --- 2. The Guidelines (Prose) --- */
@@ -76,8 +76,8 @@
 .guideline-block ul, 
 .guideline-block ol {
     font-family: var(--font-serif, serif);
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1.15rem;
+    line-height: 1.8;
     color: var(--text-color);
     padding-left: 1.5rem;
 }
@@ -133,14 +133,16 @@ code {
 .submission-card h3 {
     font-family: var(--font-serif, serif);
     font-size: 2rem;
+    font-weight: 500;
     margin-bottom: 1rem;
     color: var(--text-color);
 }
 
 .submission-card p {
     font-family: var(--font-sans, sans-serif);
+    font-size: 0.95rem;
     color: var(--text-color);
-    opacity: 0.8;
+    opacity: 0.75;
     margin-bottom: 2rem;
 }
 
@@ -176,7 +178,7 @@ code {
 
 .value {
     font-family: var(--font-serif, serif);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     color: var(--text-color);
 }
 
@@ -199,11 +201,23 @@ code {
 /* Review Note */
 .review-note {
     font-family: var(--font-sans, sans-serif);
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: var(--text-color);
-    opacity: 0.7;
+    opacity: 0.65;
     border-top: 1px solid var(--border-color);
     padding-top: 1.5rem;
+    line-height: 1.6;
+}
+
+/* Dark Mode */
+[data-theme="dark"] .submission-card {
+    box-shadow: none;
+}
+
+[data-theme="dark"] code {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
 }
 
 /* Responsive */

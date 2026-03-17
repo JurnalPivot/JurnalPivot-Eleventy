@@ -40,7 +40,8 @@
 /* Meta Data (Author • Date) */
 .article-header .meta {
     font-size: 0.95rem;
-    color: #777;
+    color: var(--text-color);
+    opacity: 0.55;
     font-family: var(--font-sans, sans-serif);
     display: flex;
     justify-content: center;
@@ -66,8 +67,8 @@
     max-width: 680px; /* Optimal reading width */
     margin: 0 auto 4rem auto;
     font-family: var(--font-serif, serif);
-    font-size: 1.15rem; 
-    line-height: 1.8;
+    font-size: 1.2rem; /* Bumped slightly: Garamond reads optically smaller than Lora */
+    line-height: 1.85;
     color: var(--text-color, #333);
     padding: 0 1.5rem;
 }
@@ -77,42 +78,45 @@
     margin-bottom: 1.5rem;
 }
 
-/* Emulate the "Lead Paragraph" from reference automatically
-   (Makes the first paragraph slightly larger) */
+/* Lead Paragraph — slightly larger, gives editorial weight */
 .prose > p:first-of-type {
-    font-size: 1.3rem;
-    line-height: 1.6;
+    font-size: 1.35rem;
+    line-height: 1.65;
     color: var(--text-color, #333);
     margin-bottom: 2rem;
 }
 
-/* Headings inside the article */
+/* Headings inside the article — use serif for h2/h3 to stay in Garamond family */
 .prose h2 {
-    font-family: var(--font-sans, sans-serif);
-    font-size: 1.8rem;
+    font-family: var(--font-serif, serif);
+    font-size: 1.75rem;
+    font-weight: 600;
     margin-top: 3rem;
     margin-bottom: 1rem;
-    font-weight: 700;
     color: var(--text-color, #333);
+    letter-spacing: -0.01em;
 }
 
 .prose h3 {
-    font-family: var(--font-sans, sans-serif);
-    font-size: 1.4rem;
+    font-family: var(--font-serif, serif);
+    font-size: 1.35rem;
+    font-weight: 600;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
-    font-weight: 600;
+    color: var(--text-color, #333);
 }
 
-/* Blockquotes (Styled like the reference) */
+/* Blockquotes */
 .prose blockquote {
-    border-left: 4px solid var(--accent-color, #2563eb);
+    border-left: 3px solid var(--accent-color, #2563eb);
     margin: 2.5rem 0;
-    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    padding: 1.25rem 1.5rem 1.25rem 2rem;
     font-style: italic;
     background: var(--card-bg, #f9f9f9);
     border-radius: 0 8px 8px 0;
-    color: #555;
+    color: var(--text-color);
+    opacity: 0.85;
+    font-size: 1.15rem;
 }
 
 /* Images inside the text */
@@ -190,6 +194,43 @@
     margin: 0;
 }
 
+/* Make the author card a clickable link */
+.author-grid-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: var(--card-bg, #f9f9f9);
+    border: 1px solid var(--border-color, #e5e5e5);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.author-grid-link:hover {
+    border-color: var(--accent-color, #2563eb);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    color: inherit;
+}
+
+.author-profile-cta {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.8rem;
+    color: var(--accent-color, #2563eb);
+    font-weight: 600;
+    margin-left: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.author-grid-link:hover .author-profile-cta {
+    opacity: 1;
+}
+
 /* 4. RELATED ARTICLES COMPONENT
    Matches structure in: components/related-posts.njk
 ----------------------------------------- */
@@ -202,19 +243,20 @@
 
 /* To center the content inside the section */
 .related-section > h3 {
-    max-width: 800px; /* Matches container width */
+    max-width: 800px;
     margin: 0 auto 2rem auto;
     font-family: var(--font-sans, sans-serif);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #777;
+    letter-spacing: 1.5px;
+    color: var(--text-color);
+    opacity: 0.5;
     border-bottom: 2px solid var(--accent-color, #2563eb);
-    display: inline-block; /* Only underline the text */
-    /* Trick to center the heading logic while keeping inline-block underline */
-    position: relative; 
+    display: inline-block;
+    position: relative;
     left: 50%;
     transform: translateX(-50%);
+    opacity: 0.6;
 }
 
 .related-grid {
@@ -252,8 +294,9 @@
 .related-card p {
     font-family: var(--font-sans, sans-serif);
     font-size: 0.85rem;
-    color: #777;
-    margin-top: auto; /* Pushes author name to bottom */
+    color: var(--text-color);
+    opacity: 0.55;
+    margin-top: auto;
 }
 
 /* Responsive Design */
@@ -272,18 +315,18 @@
     }
 }
 
-/* Dark Mode Overrides (If your global JS toggles data-theme="dark") */
-[data-theme="dark"] .category-tag {
-    background-color: #333;
-    border-color: #444;
-    color: #e0e0e0;
-}
-
+/* Dark Mode Overrides */
 [data-theme="dark"] .prose blockquote {
-    color: #ccc;
-    background: #1a1a1a;
+    background: var(--card-bg);
+    opacity: 1;
+    color: var(--text-color);
 }
 
 [data-theme="dark"] .author-grid p {
-    color: #aaa;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+[data-theme="dark"] .related-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }

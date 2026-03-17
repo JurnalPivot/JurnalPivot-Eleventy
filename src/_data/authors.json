@@ -1,14 +1,47 @@
 {
   "Jonathan K.": {
+    "slug": "jonathan-k",
     "bio": "Try again, fail again, fail better.",
-    "photo": "/images/authors/jonathan.jpg"
+    "photo": "/images/authors/jonathan.jpg",
+    "role": "Editor",
+    "monogram": "JK",
+    "monogramColor": "#2F4F4F",
+    "quote": "Penggemar Samuel Beckett.",
+    "longBio": "...",
+    "links": [
+      { "label": "Instagram", "url": "" },
+      { "label": "Twitter / X", "url": "" },
+      { "label": "", "url": "" }
+    ]
   },
   "Reyner T.": {
-    "bio": "Menocba menulis meski karatan di kepala.",
-    "photo": "/images/authors/reyner.jpg"
+    "slug": "reyner-t",
+    "bio": "Mencoba menulis meski karatan di kepala.",
+    "photo": "/images/authors/reyner.jpg",
+    "role": "Editor",
+    "monogram": "RT",
+    "monogramColor": "#8B0000",
+    "quote": "Berkontribusi minimal sebagai editor.",
+    "longBio": "...",
+    "links": [
+      { "label": "Instagram", "url": "https://www.instagram.com/reyner_35/" },
+      { "label": "Email", "url": "mailto:reyner.thaddeus.23@gmail.com" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/reyner-purwanto/" }
+    ]
   },
   "Ria Dara": {
-    "bio": "Penulis opini, fiksi politik, dan puisi sajak bebas",
-    "photo": "/images/authors/ria.jpg"
+    "slug": "ria-dara",
+    "bio": "Penulis opini, fiksi politik, dan puisi sajak bebas.",
+    "photo": "/images/authors/ria.jpg",
+    "role": "Kontributor",
+    "monogram": "RD",
+    "monogramColor": "#556B2F",
+    "quote": "...",
+    "longBio": "RIA DARA merupakan nama pena dari Rizky Aditya Ramadhan. Ia menulis opini, fiksi politik, dan puisi sajak bebas (free verse). Karya terbarunya adalah Pipeline Era, sebuah kumpulan puisi berbahasa Inggris mengenai anti-intelektualisme yang diterbitkan melalui Ellunar Publisher. Pada Juli 2025, Ramadhan berhasil menyelesaikan studi sarjana program studi Hubungan Internasional di Universitas Katolik Parahyangan. Karya tulisnya pernah diterbitkan di Hey Young Writer, Solavivre Zine, Dyonzine, Jakarta Philosophy, LPM Mercusuar UNAIR, dan lain-lain.",
+    "links": [
+      { "label": "Instagram", "url": "https://www.instagram.com/kandang_hantu/" },
+      { "label": "Email", "url": "mailto:kapitaldiskusi@gmail.com" },
+      { "label": "Blog", "url": "https://kandanghantu.wordpress.com/" }
+    ]
   }
 }

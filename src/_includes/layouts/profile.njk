@@ -1,0 +1,114 @@
+---
+layout: base.njk
+cssFile: profile.css
+---
+
+{% set currentAuthor = authors[authorName] %}
+
+<div class="profile-container">
+
+    <!-- BACK LINK -->
+    <nav class="profile-breadcrumb">
+        <a href="/pages/tentang" class="back-link">← Kembali ke Redaksi</a>
+    </nav>
+
+    {% if currentAuthor %}
+
+    <!-- HERO: Monogram + Name + Role -->
+    <header class="profile-hero">
+        <div class="profile-monogram" style="background-color: {{ currentAuthor.monogramColor }};">
+            {{ currentAuthor.monogram }}
+        </div>
+        <div class="profile-identity">
+            <span class="profile-role">{{ currentAuthor.role }}</span>
+            <h1 class="profile-name">{{ authorName }}</h1>
+            <p class="profile-quote">"{{ currentAuthor.quote }}"</p>
+        </div>
+    </header>
+
+    <hr class="profile-divider">
+
+    <!-- BODY: Bio + Interests -->
+    <div class="profile-body">
+
+        <section class="profile-bio">
+            <h2 class="profile-section-label">Tentang</h2>
+            <p>{{ currentAuthor.longBio }}</p>
+        </section>
+
+        <aside class="profile-sidebar">
+            <!-- Links: up to 3 flexible slots, only renders if at least one has a url -->
+            {% set hasLinks = false %}
+            {% for link in currentAuthor.links %}
+                {% if link.url %}
+                    {% set hasLinks = true %}
+                {% endif %}
+            {% endfor %}
+
+            {% if hasLinks %}
+            <div class="profile-card">
+                <h3 class="sidebar-label">Tautan</h3>
+                <div class="social-list">
+                    {% for link in currentAuthor.links %}
+                        {% if link.url and link.label %}
+
+                            {# Check if this is an email link #}
+                            {% if "mailto:" in link.url %}
+                                {# Email: render as a copy-to-clipboard button #}
+                                <button
+                                    class="social-link email-copy-btn"
+                                    data-email="{{ link.url | replace('mailto:', '') }}"
+                                    type="button"
+                                    aria-label="Salin alamat email {{ link.label }}"
+                                >
+                                    <span class="social-link-label">{{ link.label }}</span>
+                                    <span class="email-copy-hint">{{ link.url | replace('mailto:', '') }}</span>
+                                    <span class="social-link-arrow">⊕</span>
+                                </button>
+                            {% else %}
+                                {# Regular link: open in new tab #}
+                                <a href="{{ link.url }}" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <span class="social-link-label">{{ link.label }}</span>
+                                    <span class="social-link-arrow">↗</span>
+                                </a>
+                            {% endif %}
+
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </aside>
+
+    </div>
+
+    <hr class="profile-divider">
+
+    <!-- ARTICLES by this author -->
+    <section class="profile-articles">
+        <h2 class="profile-section-label">Tulisan</h2>
+
+        <div class="profile-articles-grid">
+            {% set hasArticles = false %}
+            {% for post in collections.articles | reverse %}
+                {% if post.data.author == authorName %}
+                    {% set hasArticles = true %}
+                    <article class="profile-article-card">
+                        <span class="card-date">{{ post.date | readableDate }}</span>
+                        <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                        <span class="card-category">{{ post.data.category }}</span>
+                    </article>
+                {% endif %}
+            {% endfor %}
+
+            {% if not hasArticles %}
+                <p class="no-articles">Belum ada tulisan yang dipublikasikan.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    {% else %}
+    <p class="not-found">Profil penulis tidak ditemukan.</p>
+    {% endif %}
+
+</div>

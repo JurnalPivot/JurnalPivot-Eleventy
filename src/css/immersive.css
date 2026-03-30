@@ -90,7 +90,10 @@
     margin-bottom: 1.75rem;
 }
 
-.im-prose p:first-child {
+/* Only the very first paragraph of the very first prose block
+   gets the enlarged lead treatment. All subsequent im-prose
+   blocks start at normal body size. */
+.im-prose:first-of-type p:first-child {
     font-size: 1.5rem;
     line-height: 1.65;
 }
@@ -202,13 +205,13 @@
     pointer-events: auto;
 }
 
-/* The text card itself */
+/* The text card itself — matched to prose body size */
 .im-scrolly-step p,
 .im-scrolly-step blockquote {
     background: rgba(255, 255, 255, 0.93);
     color: #111;
     font-family: var(--font-serif);
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     padding: 1.5rem 2rem;
     border-radius: 2px;
@@ -220,7 +223,7 @@
 .im-scrolly-step blockquote {
     border-left: 3px solid var(--accent-color);
     font-style: italic;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 /* Centre-aligned variant for single dramatic statements */

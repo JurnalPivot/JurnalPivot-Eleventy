@@ -3,21 +3,32 @@ layout: base.njk
 cssFile: immersive.css
 ---
 
-<!-- 
-  No .prose class here! 
-  We want full control over the width.
--->
 <article class="immersive-article">
-    
-    <!-- We still want the standard header -->
-    {% include "components/article-header.njk" %}
 
-    <!-- The Content -->
-    {{ content | safe }}
+    <!-- TITLE BLOCK: full-width, centred, no max-width constraint -->
+    <header class="immersive-header">
+        {% if category %}
+        <span class="immersive-category">{{ category }}</span>
+        {% endif %}
+        <h1 class="immersive-title">{{ title }}</h1>
+        <p class="immersive-lede">{{ lede }}</p>
+        <div class="immersive-meta">
+            <span>{{ author }}</span>
+            <span class="immersive-meta-dot">&bull;</span>
+            <span>{{ date | readableDate }}</span>
+        </div>
+    </header>
 
-    <!-- Footer Area -->
-    <hr class="divider">
-    {% include "components/author-bio.njk" %}
-    {% include "components/related-posts.njk" %}
+    <!-- BODY: the article author writes raw HTML sections in the markdown -->
+    <div class="immersive-body">
+        {{ content | safe }}
+    </div>
+
+    <!-- FOOTER -->
+    <div class="immersive-footer-wrap">
+        <hr class="divider">
+        {% include "components/author-bio.njk" %}
+        {% include "components/related-posts.njk" %}
+    </div>
 
 </article>

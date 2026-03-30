@@ -1,57 +1,536 @@
-/* Default text styling (so you don't lose readability) */
-.immersive-article p {
-    max-width: 680px;
-    margin: 0 auto 1.5rem auto;
+/* ===========================================
+   IMMERSIVE / SCROLLYTELLING ARTICLE STYLES
+   =========================================== */
+
+/* --- Override base layout constraints for full-bleed --- */
+.immersive-article {
+    /* Bust out of the global container */
+    width: 100%;
+}
+
+/* Ensure footer area respects the normal reading width */
+.immersive-footer-wrap {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* -----------------------------------------------
+   TITLE BLOCK
+----------------------------------------------- */
+.immersive-header {
+    max-width: 780px;
+    margin: 4rem auto 5rem auto;
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.immersive-category {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-color);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 1.25rem;
+}
+
+.immersive-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 500;
+    line-height: 1.08;
+    color: var(--text-color);
+    margin-bottom: 1.75rem;
+    letter-spacing: -0.02em;
+}
+
+.immersive-lede {
     font-family: var(--font-serif);
     font-size: 1.2rem;
-    line-height: 1.85;
-    background: rgba(255, 255, 255, 0.92); /* Readability over video — intentionally light-locked */
-    color: #1a1a1a; /* Always dark text against the light background panel */
-    padding: 1rem 1.5rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--text-color);
+    opacity: 0.75;
+    max-width: 600px;
+    margin: 0 auto 1.75rem auto;
 }
 
-/* In dark mode, flip the overlay panel to dark */
-[data-theme="dark"] .immersive-article p {
-    background: rgba(17, 17, 17, 0.88);
-    color: #e0e0e0;
+.immersive-meta {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--text-color);
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
 }
 
-/* THE SCROLLY CONTAINER */
-.scrolly-container {
+.immersive-meta-dot {
+    opacity: 0.4;
+}
+
+/* -----------------------------------------------
+   PROSE SECTIONS  (.im-prose)
+   Standard reading column, same feel as article.css
+----------------------------------------------- */
+.im-prose {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    line-height: 1.9;
+    color: var(--text-color);
+}
+
+.im-prose p {
+    margin-bottom: 1.75rem;
+}
+
+.im-prose p:first-child {
+    font-size: 1.5rem;
+    line-height: 1.65;
+}
+
+.im-prose a {
+    color: var(--accent-color);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* Section header inside immersive body */
+.im-section-title {
+    max-width: 680px;
+    margin: 5rem auto 2rem auto;
+    padding: 0 1.5rem;
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--text-color);
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1.25rem;
+}
+
+/* Spacer between sections */
+.im-spacer {
+    height: 4rem;
+}
+
+.im-spacer-lg {
+    height: 8rem;
+}
+
+/* -----------------------------------------------
+   SCROLLY BLOCK  (.im-scrolly)
+   The core sticky-media + scrolling-text pattern.
+   Usage:
+     <div class="im-scrolly">
+       <div class="im-scrolly-media">
+         <img src="..." alt="...">
+         -- OR --
+         <video src="..." autoplay muted loop playsinline></video>
+         -- OR --
+         placeholder div (see below)
+       </div>
+       <div class="im-scrolly-text">
+         <div class="im-scrolly-step"><p>...</p></div>
+         <div class="im-scrolly-step"><p>...</p></div>
+       </div>
+     </div>
+----------------------------------------------- */
+.im-scrolly {
     position: relative;
-    /* Height is determined by how much text you have */
+    /* Height grows with the text content */
 }
 
-/* THE BACKGROUND MEDIA (Video/Image) */
-.scrolly-background {
+/* The sticky media panel */
+.im-scrolly-media {
     position: sticky;
     top: 0;
-    height: 100vh; /* Full screen height */
+    height: 100vh;       /* fallback for browsers without svh support */
+    height: 100svh;      /* svh = small viewport height: accounts for mobile browser chrome */
     width: 100%;
-    z-index: 1; /* Behind the text */
+    z-index: 1;
     overflow: hidden;
+    background: #0a0a0a; /* Dark base while media loads */
 }
 
-.scrolly-background img,
-.scrolly-background video {
+.im-scrolly-media img,
+.im-scrolly-media video,
+.im-scrolly-media gif {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures it fills screen */
+    object-fit: cover;
+    display: block;
 }
 
-/* THE FOREGROUND TEXT */
-.scrolly-foreground {
+/* Caption shown at bottom of media panel */
+.im-scrolly-caption {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: right;
+    max-width: 320px;
+    line-height: 1.4;
+    z-index: 3;
+}
+
+/* The scrolling text column */
+.im-scrolly-text {
     position: relative;
-    z-index: 2; /* On top of video */
-    padding-bottom: 50vh; /* Space to scroll */
-    margin-top: -100vh; /* Pull text up to overlap the sticky video */
-    padding-top: 50vh; /* Start text lower down */
+    z-index: 2;
+    /* Pull text back up to overlap the sticky media */
+    margin-top: -100vh;
+    /* Pad the bottom so the last step has room to scroll past */
+    padding-bottom: 60vh;
+    pointer-events: none; /* Clicks pass through to media if needed */
 }
 
-.step {
-    min-height: 80vh; /* Each text block takes scrolling time */
+/* Each individual text card */
+.im-scrolly-step {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centre all cards by default */
+    padding: 0 1.5rem;
+    pointer-events: auto;
+}
+
+/* The text card itself */
+.im-scrolly-step p,
+.im-scrolly-step blockquote {
+    background: rgba(255, 255, 255, 0.93);
+    color: #111;
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    max-width: 520px;
+    margin: 0;
+}
+
+.im-scrolly-step blockquote {
+    border-left: 3px solid var(--accent-color);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Centre-aligned variant for single dramatic statements */
+.im-scrolly-step.centre {
+    justify-content: center;
+}
+
+.im-scrolly-step.centre p {
+    text-align: center;
+    max-width: 600px;
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+/* Right-aligned variant */
+.im-scrolly-step.right {
+    justify-content: flex-end;
+}
+
+/* Dark card variant (for light-coloured media) */
+.im-scrolly-step.dark p,
+.im-scrolly-step.dark blockquote {
+    background: rgba(10, 10, 10, 0.88);
+    color: #e8e8e8;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* -----------------------------------------------
+   FULL-BLEED STILL IMAGE  (.im-fullbleed)
+   A non-sticky, full-width image break between
+   prose sections. Simpler than scrolly.
+----------------------------------------------- */
+.im-fullbleed {
+    width: 100%;
+    margin: 4rem 0;
+    position: relative;
+}
+
+.im-fullbleed img,
+.im-fullbleed video {
+    width: 100%;
+    max-height: 85vh;
+    max-height: 85svh;
+    object-fit: cover;
+    display: block;
+}
+
+.im-fullbleed figcaption {
+    max-width: 680px;
+    margin: 0.75rem auto 0 auto;
+    padding: 0 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    color: var(--text-color);
+    opacity: 0.5;
+    line-height: 1.5;
+}
+
+/* -----------------------------------------------
+   PLACEHOLDER BLOCKS
+   Shown when media files are not yet added.
+   Remove the class once a real src is present.
+----------------------------------------------- */
+.im-placeholder {
+    background: #1a1a1a;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.im-scrolly-media.im-placeholder {
+    /* height already set by .im-scrolly-media */
+}
+
+.im-fullbleed.im-placeholder {
+    height: 60vh;
+}
+
+/* -----------------------------------------------
+   DARK MODE
+----------------------------------------------- */
+[data-theme="dark"] .im-scrolly-step p,
+[data-theme="dark"] .im-scrolly-step blockquote {
+    background: rgba(15, 15, 15, 0.91);
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .im-scrolly-step.dark p,
+[data-theme="dark"] .im-scrolly-step.dark blockquote {
+    background: rgba(240, 240, 240, 0.9);
+    color: #111;
+}
+
+/* -----------------------------------------------
+   FOOTER COMPONENTS
+   The author-bio and related-posts components
+   have their styles in article.css which isn't
+   loaded here, so we restate the essentials.
+----------------------------------------------- */
+.immersive-footer-wrap .divider {
+    max-width: 680px;
+    margin: 0 auto;
+    border: 0;
+    border-top: 1px solid var(--border-color, #e5e5e5);
+}
+
+.immersive-footer-wrap .author-section {
+    max-width: 680px;
+    margin: 4rem auto 5rem auto;
+    padding: 0 1.5rem;
+}
+
+.immersive-footer-wrap .author-grid,
+.immersive-footer-wrap .author-grid-link {
+    background-color: var(--card-bg, #f9f9f9);
+    border: 1px solid var(--border-color, #e5e5e5);
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.immersive-footer-wrap .author-grid-link:hover {
+    border-color: var(--accent-color, #2563eb);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.immersive-footer-wrap .author-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--border-color, #e5e5e5);
+    flex-shrink: 0;
+}
+
+.immersive-footer-wrap .author-grid h3 {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.immersive-footer-wrap .author-grid p {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.95rem;
+    color: var(--text-color);
+    opacity: 0.65;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.immersive-footer-wrap .author-profile-cta {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.8rem;
+    color: var(--accent-color, #2563eb);
+    font-weight: 600;
+    margin-left: auto;
+    white-space: nowrap;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.immersive-footer-wrap .author-grid-link:hover .author-profile-cta {
+    opacity: 1;
+}
+
+.immersive-footer-wrap .related-section {
+    border-top: 1px solid var(--border-color, #e5e5e5);
+    padding: 4rem 1.5rem;
+    margin-top: 4rem;
+}
+
+.immersive-footer-wrap .related-section > h3 {
+    max-width: 800px;
+    margin: 0 auto 2rem auto;
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-color);
+    opacity: 0.6;
+    border-bottom: 2px solid var(--accent-color, #2563eb);
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.immersive-footer-wrap .related-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.immersive-footer-wrap .related-card {
+    background: var(--card-bg, #f9f9f9);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #e5e5e5);
+    transition: transform 0.2s, border-color 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.immersive-footer-wrap .related-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent-color, #2563eb);
+}
+
+.immersive-footer-wrap .related-card h4 {
+    font-family: var(--font-serif, serif);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.immersive-footer-wrap .related-card p {
+    font-family: var(--font-sans, sans-serif);
+    font-size: 0.85rem;
+    color: var(--text-color);
+    opacity: 0.55;
+    margin-top: auto;
+}
+
+/* -----------------------------------------------
+   RESPONSIVE
+----------------------------------------------- */
+@media (max-width: 680px) {
+    .immersive-title {
+        font-size: 2.2rem;
+    }
+
+    .immersive-header {
+        margin-top: 2.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .im-prose {
+        font-size: 1.15rem;
+    }
+
+    .im-prose p:first-child {
+        font-size: 1.25rem;
+    }
+
+    /* On mobile, reduce sticky height so browser chrome doesn't eat it */
+    .im-scrolly-media {
+        height: 60vh;
+        height: 60svh;
+        position: sticky; /* Keep sticky but shorter */
+    }
+
+    .im-scrolly-text {
+        margin-top: -60vh;
+        margin-top: -60svh;
+        padding-bottom: 40vh;
+    }
+
+    .im-scrolly-step {
+        padding: 0 1rem;
+        min-height: 50vh;
+        /* Anchor text cards to bottom of the visible media on mobile */
+        align-items: flex-end;
+        padding-bottom: 2.5rem;
+    }
+
+    .im-scrolly-step p,
+    .im-scrolly-step blockquote {
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.7;
+        padding: 1.1rem 1.25rem;
+    }
+
+    .im-fullbleed img,
+    .im-fullbleed video {
+        max-height: 55vh;
+        max-height: 55svh;
+    }
+
+    .im-section-title {
+        font-size: 1.35rem;
+        margin-top: 3.5rem;
+    }
+
+    .immersive-footer-wrap .related-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .immersive-footer-wrap .author-grid,
+    .immersive-footer-wrap .author-grid-link {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .immersive-footer-wrap .author-profile-cta {
+        margin-left: 0;
+    }
 }

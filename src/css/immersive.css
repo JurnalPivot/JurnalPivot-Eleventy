@@ -46,17 +46,6 @@
     letter-spacing: -0.02em;
 }
 
-.immersive-lede {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-style: italic;
-    line-height: 1.65;
-    color: var(--text-color);
-    opacity: 0.75;
-    max-width: 600px;
-    margin: 0 auto 1.75rem auto;
-}
-
 .immersive-meta {
     font-family: var(--font-sans);
     font-size: 0.88rem;
@@ -88,14 +77,6 @@
 
 .im-prose p {
     margin-bottom: 1.75rem;
-}
-
-/* Only the very first paragraph of the very first prose block
-   gets the enlarged lead treatment. All subsequent im-prose
-   blocks start at normal body size. */
-.im-prose:first-of-type p:first-child {
-    font-size: 1.5rem;
-    line-height: 1.65;
 }
 
 .im-prose a {

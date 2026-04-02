@@ -6,12 +6,15 @@ category: "Budaya"
 tags: articles
 layout: layouts/immersive.njk
 lede: "Ultraman adalah drama anak-anak yang mengalami transformasi dari medium simbolisme makna menjadi film laga kekanak-kanakan."
+draft: true
 ---
 
 <!-- ============================================================
   OPENING PROSE — standard reading column
 ============================================================ -->
 <div class="im-prose">
+
+<p><b><em>Ultraman adalah drama anak-anak yang mengalami transformasi dari medium simbolisme makna menjadi film laga kekanak-kanakan.</em></b></p>
 
 <p>Bagi sebagian besar Milenial maupun Gen-Z, Ultraman dan kawan sejenisnya seperti Power Rangers dan Kamen Rider adalah tontonan laga masa kecil. Formulanya sederhana; ada karakter utama yang memiliki kemampuan khusus untuk melawan penjahat, biasanya berupa monster atau manusia lain yang beritikad jahat.</p>
 

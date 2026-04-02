@@ -2,7 +2,20 @@ const { DateTime } = require("luxon");
 const markdownIt = require("markdown-it");
 const markdownItFootnote = require("markdown-it-footnote");
 
+const isProduction = process.env.ELEVENTY_ENV === 'production';
+
 module.exports = function(eleventyConfig) {
+
+  // Exclude draft articles from production builds.
+  // Mark an article with `draft: true` in its frontmatter.
+  // Locally (dev): all drafts are visible as normal.
+  // Production:    drafts are excluded from the build entirely.
+  eleventyConfig.addPreprocessor('drafts', '*', (data) => {
+    if (isProduction && data.draft === true) {
+      return false; // returning false removes the file from the build
+    }
+  });
+
   // 1. Adding a filter block
   eleventyConfig.addFilter("readableDate", (dateObj) => {
     // If the date is missing, return empty string

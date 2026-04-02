@@ -30,6 +30,77 @@ function updateIcons(theme) {
 }
 
 /* ---------------------------------------------------
+   Link preview tooltips
+   Injects a small card above hovered links in .prose
+   and .im-prose showing the destination domain + a
+   visit button. Footnote anchor links are excluded.
+   Zero external dependencies, no fetch calls.
+--------------------------------------------------- */
+(function () {
+    // Only run on article/immersive pages
+    var containers = document.querySelectorAll('.prose, .im-prose');
+    if (!containers.length) return;
+
+    containers.forEach(function (container) {
+        var links = container.querySelectorAll('a[href]');
+
+        links.forEach(function (link) {
+            var href = link.getAttribute('href');
+
+            // Skip: footnote anchors, backref anchors, empty
+            if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
+
+            // Extract a clean display label from the URL
+            var displayText = href;
+            try {
+                var url = new URL(href, window.location.href);
+                displayText = url.hostname.replace(/^www\./, '');
+            } catch (e) { /* relative URL, keep as-is */ }
+
+            // Build the preview card
+            var card = document.createElement('span');
+            card.className = 'link-preview';
+            card.innerHTML =
+                '<span class="preview-domain">' + displayText + '</span>' +
+                '<span class="preview-visit">Buka →</span>';
+
+            // Wire up the visit button
+            card.querySelector('.preview-visit').addEventListener('click', function (e) {
+                e.stopPropagation();
+                window.open(href, '_blank', 'noopener,noreferrer');
+            });
+
+            link.appendChild(card);
+
+            // Show/hide
+            var hideTimer;
+
+            link.addEventListener('mouseenter', function () {
+                clearTimeout(hideTimer);
+                card.style.display = 'block';
+            });
+
+            link.addEventListener('mouseleave', function () {
+                // Small delay so user can move mouse into the card itself
+                hideTimer = setTimeout(function () {
+                    card.style.display = 'none';
+                }, 120);
+            });
+
+            card.addEventListener('mouseenter', function () {
+                clearTimeout(hideTimer);
+            });
+
+            card.addEventListener('mouseleave', function () {
+                hideTimer = setTimeout(function () {
+                    card.style.display = 'none';
+                }, 120);
+            });
+        });
+    });
+}());
+
+/* ---------------------------------------------------
    Email copy-to-clipboard
    Targets any .email-copy-btn on the page.
    Reads the address from data-email, copies it,

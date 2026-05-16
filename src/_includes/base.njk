@@ -13,9 +13,13 @@
 
     <!-- All Page CSS Style -->
     <link rel="stylesheet" href="/css/global.css">
-    <!-- Using a specific CSS based on the page wanted to be load -->
+    <!-- Primary page CSS (set via cssFile in each sub-layout's frontmatter) -->
     {% if cssFile %}
       <link rel="stylesheet" href="/css/{{ cssFile }}">
+    {% endif %}
+    <!-- Optional secondary CSS for layouts that extend another (e.g. podcast extends article) -->
+    {% if additionalCssFile %}
+      <link rel="stylesheet" href="/css/{{ additionalCssFile }}">
     {% endif %}
 </head>
 

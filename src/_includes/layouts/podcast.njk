@@ -1,0 +1,214 @@
+---
+layout: base.njk
+cssFile: article.css
+additionalCssFile: podcast.css
+---
+
+{# ── Artwork: episode number, fallback to "?" ── #}
+{% set artworkNum = podcast.episodeNumber if podcast.episodeNumber else "?" %}
+
+<article class="main-article podcast-article">
+
+    {# ══════════════════════════════════════════
+       SECTION 1 — Article Header
+    ══════════════════════════════════════════ #}
+    {% include "components/article-header.njk" %}
+
+    {# ══════════════════════════════════════════
+       SECTION 2 — Podcast Player Card
+    ══════════════════════════════════════════ #}
+    <div class="podcast-player-card" id="playerCard">
+
+        <div class="podcast-artwork" role="img" aria-label="Episode {{ artworkNum }}">
+            <svg class="artwork-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="artGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#1d4ed8"/>
+                        <stop offset="100%" style="stop-color:#3b82f6"/>
+                    </linearGradient>
+                </defs>
+                <rect width="200" height="200" fill="url(#artGrad)"/>
+                <circle cx="165" cy="35"  r="65" fill="rgba(255,255,255,0.06)"/>
+                <circle cx="35"  cy="165" r="55" fill="rgba(255,255,255,0.04)"/>
+                <text x="100" y="88"
+                    text-anchor="middle"
+                    fill="rgba(255,255,255,0.4)"
+                    font-family="Inter, system-ui, sans-serif"
+                    font-size="13"
+                    font-weight="700"
+                    letter-spacing="5">EP</text>
+                <text x="100" y="148"
+                    text-anchor="middle"
+                    fill="rgba(255,255,255,0.92)"
+                    font-family="Georgia, 'EB Garamond', serif"
+                    font-size="76"
+                    font-weight="700">{{ artworkNum }}</text>
+                <text x="100" y="180"
+                    text-anchor="middle"
+                    fill="rgba(255,255,255,0.25)"
+                    font-family="Inter, system-ui, sans-serif"
+                    font-size="9"
+                    font-weight="600"
+                    letter-spacing="3">JURNALPIVOT</text>
+            </svg>
+        </div>
+
+        <div class="podcast-player-body">
+
+            <div class="podcast-episode-meta">
+                {% if podcast.episodeNumber %}
+                <span class="podcast-ep-label">Episode {{ podcast.episodeNumber }}</span>
+                {% endif %}
+                {% if podcast.guest %}
+                <p class="podcast-guest-line">
+                    bersama <strong>{{ podcast.guest }}</strong>{% if podcast.guestTitle %}<span class="podcast-guest-title">, {{ podcast.guestTitle }}</span>{% endif %}
+                </p>
+                {% endif %}
+            </div>
+
+            <audio id="podcastAudio"
+                   src="{{ podcast.audioSrc }}"
+                   preload="metadata"
+                   aria-label="Audio: {{ title }}">
+            </audio>
+
+            <div class="progress-row">
+                <span class="time-label" id="timeCurrent">0:00</span>
+                <div class="progress-track" id="progressTrack"
+                     role="slider" aria-label="Posisi audio" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-fill"  id="progressFill"></div>
+                    <div class="progress-thumb" id="progressThumb"></div>
+                </div>
+                <span class="time-label time-duration" id="timeDuration">{{ podcast.duration or "—" }}</span>
+            </div>
+
+            <div class="controls-row">
+                <button class="ctrl-btn ctrl-skip" id="btnRewind"
+                        aria-label="Mundur 15 detik" title="−15 detik">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0 .49-3.5"/>
+                    </svg>
+                    <span class="skip-label">15</span>
+                </button>
+
+                <button class="ctrl-btn ctrl-play" id="btnPlay" aria-label="Putar">
+                    <svg class="icon-play"  viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+
+                <button class="ctrl-btn ctrl-skip" id="btnForward"
+                        aria-label="Maju 15 detik" title="+15 detik">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.49-3.5"/>
+                    </svg>
+                    <span class="skip-label">15</span>
+                </button>
+
+                <button class="ctrl-btn ctrl-speed" id="btnSpeed"
+                        aria-label="Kecepatan putar">1×</button>
+            </div>
+        </div>
+    </div>
+
+    {# ══════════════════════════════════════════
+       SECTION 3 — Sticky Mini-Player
+    ══════════════════════════════════════════ #}
+    <div class="sticky-player" id="stickyPlayer" aria-hidden="true">
+        <div class="sticky-inner">
+
+            <div class="sticky-artwork" aria-hidden="true">
+                <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="stickyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1d4ed8"/>
+                            <stop offset="100%" style="stop-color:#3b82f6"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="40" height="40" fill="url(#stickyGrad)" rx="6"/>
+                    <text x="20" y="27"
+                        text-anchor="middle"
+                        fill="rgba(255,255,255,0.9)"
+                        font-family="Georgia, serif"
+                        font-size="18"
+                        font-weight="700">{{ artworkNum }}</text>
+                </svg>
+            </div>
+
+            <div class="sticky-info">
+                <span class="sticky-title">{{ title }}</span>
+                {% if podcast.guest %}
+                <span class="sticky-guest">{{ podcast.guest }}</span>
+                {% endif %}
+            </div>
+
+            <div class="sticky-controls">
+                <span class="sticky-time" id="stickyTimeCurrent">0:00</span>
+                <div class="sticky-progress-track" id="stickyProgressTrack">
+                    <div class="sticky-progress-fill" id="stickyProgressFill"></div>
+                </div>
+                <button class="sticky-play-btn" id="stickyBtnPlay" aria-label="Putar/Jeda">
+                    <svg class="icon-play"  viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    {# ══════════════════════════════════════════
+       SECTION 4 — Episode Description (optional)
+    ══════════════════════════════════════════ #}
+    {% if podcast.description %}
+    <div class="prose podcast-description">
+        <p>{{ podcast.description }}</p>
+    </div>
+    {% endif %}
+
+    {# ══════════════════════════════════════════
+       SECTION 5 — Transcript
+       Chapters start collapsed. Button says "Buka Semua".
+       Clicking a chapter header expands it manually.
+       Audio playback auto-expands the active chapter.
+    ══════════════════════════════════════════ #}
+    <div class="transcript-section" id="transcript">
+        <div class="transcript-header">
+            <h2 class="transcript-heading">Transkrip</h2>
+            <button class="transcript-toggle-all" id="expandAll">Buka Semua</button>
+        </div>
+        {{ content | safe }}
+    </div>
+
+    {# ══════════════════════════════════════════
+       SECTION 6 — Author Bio
+    ══════════════════════════════════════════ #}
+    <hr class="divider">
+    {% include "components/author-bio.njk" %}
+
+</article>
+
+{# ══════════════════════════════════════════
+   SECTION 7 — Related Articles
+   Shows the 3 most recent articles regardless of category
+   (podcast category won't match regular article categories).
+══════════════════════════════════════════ #}
+<section class="related-section">
+    <h3>Bacaan Terkait</h3>
+    <div class="related-grid">
+        {% set counter = 0 %}
+        {% for post in collections.articles | reverse %}
+            {% if post.url != page.url and counter < 3 %}
+                <div class="related-card">
+                    <a href="{{ post.url }}">
+                        <h4>{{ post.data.title }}</h4>
+                        <p>By {{ post.data.author }}</p>
+                    </a>
+                </div>
+                {% set counter = counter + 1 %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<script src="/js/podcast.js"></script>

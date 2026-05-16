@@ -1,0 +1,12 @@
+---
+pagination:
+  data: authors
+  size: 1
+  alias: authorName
+  resolve: keys
+layout: layouts/profile.njk
+cssFile: profile.css
+permalink: "/penulis/{{ authors[authorName].slug }}/"
+eleventyComputed:
+  title: "{{ authorName }} — JurnalPivot"
+---

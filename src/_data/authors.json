@@ -43,5 +43,19 @@
       { "label": "Email", "url": "mailto:kapitaldiskusi@gmail.com" },
       { "label": "Blog", "url": "https://kandanghantu.wordpress.com/" }
     ]
+  },
+  "Diskurasi": {
+    "slug": "diskurasi",
+    "bio": "Sosial dan politik dari lensa masyarakat muda.",
+    "photo": "/images/authors/diskurasi.jpg",
+    "role": "Kontributor",
+    "monogram": "DS",
+    "monogramColor": "#556B2F",
+    "quote": "Sosial dan politik dari lensa masyarakat muda.",
+    "longBio": "...",
+    "links": [
+      { "label": "Instagram", "url": "https://www.instagram.com/diskurasi/" },
+      { "label": "Substack", "url": "https://diskurasi.substack.com/" }
+    ]
   }
 }

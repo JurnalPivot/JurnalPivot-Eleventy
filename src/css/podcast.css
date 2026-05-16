@@ -1,0 +1,644 @@
+/* =========================================
+   PODCAST PAGE STYLES
+   Load order: global.css → article.css → podcast.css
+   ========================================= */
+
+
+/* ── 1. PODCAST PLAYER CARD ──────────────────────────── */
+
+.podcast-player-card {
+    max-width: 680px;
+    margin: 0 auto 3.5rem auto;
+    padding: 0 1.5rem;
+    display: flex;
+    gap: 2.25rem;
+    align-items: flex-start;
+}
+
+.podcast-artwork {
+    flex-shrink: 0;
+    width: 176px;
+    height: 176px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.10),
+        0 12px 28px -4px rgba(37, 99, 235, 0.25);
+}
+
+.artwork-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.podcast-player-body {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding-top: 0.25rem;
+}
+
+.podcast-episode-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.podcast-ep-label {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent-color);
+}
+
+.podcast-guest-line {
+    font-family: var(--font-sans);
+    font-size: 0.88rem;
+    color: var(--text-color);
+    opacity: 0.65;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.podcast-guest-title { font-style: italic; }
+
+
+/* ── Progress bar ──────────────────────────────────────── */
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.time-label {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-color);
+    opacity: 0.45;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1;
+}
+
+.time-duration { text-align: right; }
+
+.progress-track {
+    flex: 1;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    transition: height 0.15s ease;
+}
+
+.progress-track:hover { height: 6px; }
+
+.progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: var(--accent-color);
+    border-radius: inherit;
+    transition: width 0.1s linear;
+    pointer-events: none;
+}
+
+.progress-thumb {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    width: 13px;
+    height: 13px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.15s ease, left 0.1s linear;
+    pointer-events: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+.progress-track:hover .progress-thumb,
+.progress-track:active .progress-thumb { opacity: 1; }
+
+
+/* ── Control buttons ───────────────────────────────────── */
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: color 0.15s ease, transform 0.1s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.ctrl-btn:hover  { color: var(--accent-color); }
+.ctrl-btn:active { transform: scale(0.9); }
+
+.ctrl-skip {
+    position: relative;
+    width: 38px;
+    height: 38px;
+}
+
+.ctrl-skip svg { width: 26px; height: 26px; }
+
+.skip-label {
+    position: absolute;
+    font-family: var(--font-sans);
+    font-size: 0.48rem;
+    font-weight: 800;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -38%);
+    pointer-events: none;
+    letter-spacing: -0.5px;
+}
+
+.ctrl-play {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    color: white !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.38);
+    transition: background 0.15s ease, transform 0.12s ease, box-shadow 0.15s ease;
+    margin: 0 0.2rem;
+}
+
+.ctrl-play:hover {
+    background: #1d4ed8;
+    transform: scale(1.06);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.48);
+}
+
+.ctrl-play:active { transform: scale(0.96); }
+.ctrl-play svg { width: 18px; height: 18px; }
+.ctrl-play .icon-play { margin-left: 2px; }
+
+.ctrl-speed {
+    font-family: var(--font-sans);
+    font-size: 0.73rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 11px;
+    opacity: 0.65;
+    transition: border-color 0.15s, opacity 0.15s, color 0.15s;
+    margin-left: auto;
+}
+
+.ctrl-speed:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+
+/* ── 2. STICKY MINI-PLAYER ───────────────────────────── */
+
+.sticky-player {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    transform: translateY(-110%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.sticky-player.is-visible { transform: translateY(0); }
+
+.sticky-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0.65rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+}
+
+.sticky-artwork {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.sticky-artwork svg { width: 100%; height: 100%; display: block; }
+
+.sticky-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.sticky-title {
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sticky-guest {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    color: var(--text-color);
+    opacity: 0.45;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sticky-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-shrink: 0;
+}
+
+.sticky-time {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--text-color);
+    opacity: 0.4;
+    white-space: nowrap;
+}
+
+.sticky-progress-track {
+    width: 130px;
+    height: 3px;
+    background: var(--border-color);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    transition: height 0.15s;
+}
+
+.sticky-progress-track:hover { height: 5px; }
+
+.sticky-progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0%;
+    background: var(--accent-color);
+    border-radius: inherit;
+    transition: width 0.1s linear;
+}
+
+.sticky-play-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--accent-color);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+    transition: background 0.15s, transform 0.12s;
+}
+
+.sticky-play-btn:hover { background: #1d4ed8; transform: scale(1.07); }
+.sticky-play-btn svg { width: 14px; height: 14px; }
+.sticky-play-btn .icon-play { margin-left: 1px; }
+
+
+/* ── 3. EPISODE DESCRIPTION ──────────────────────────── */
+
+.podcast-description {
+    margin-bottom: 2.5rem !important;
+}
+
+.podcast-description p:first-of-type {
+    font-size: 1.15rem !important;
+    line-height: 1.75 !important;
+}
+
+
+/* ── 4. TRANSCRIPT SECTION ───────────────────────────── */
+
+.transcript-section {
+    max-width: 680px;
+    margin: 0 auto 4rem auto;
+    padding: 0 1.5rem;
+}
+
+.transcript-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transcript-heading {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.transcript-toggle-all {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    cursor: pointer;
+    padding: 0;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+}
+
+.transcript-toggle-all:hover { opacity: 1; }
+
+
+/* ── 5. CHAPTER (collapsible card) ───────────────────── */
+
+.chapter {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 0.65rem;
+    /* No overflow:hidden — it was clipping the speaker turn bars */
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.chapter.is-active {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.07);
+}
+
+.chapter-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.25rem;
+    cursor: pointer;
+    gap: 0.9rem;
+    transition: background 0.15s ease;
+    list-style: none;
+    border-radius: 9px; /* match parent minus 1px */
+}
+
+.chapter-summary::-webkit-details-marker { display: none; }
+.chapter-summary::marker { display: none; }
+.chapter-summary:hover { background: var(--card-bg); }
+
+/* When open, only round the top corners so it meets the content edge cleanly */
+.chapter[open] > .chapter-summary {
+    border-radius: 9px 9px 0 0;
+}
+
+.chapter-info {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex: 1;
+    min-width: 0;
+}
+
+.chapter.is-active .chapter-summary::before {
+    content: '';
+    display: block;
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    animation: chapter-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes chapter-pulse {
+    0%, 100% { opacity: 1;   transform: scale(1);   }
+    50%       { opacity: 0.4; transform: scale(0.65); }
+}
+
+.chapter-title {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    line-height: 1.3;
+    transition: color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chapter.is-active .chapter-title { color: var(--accent-color); }
+
+.chapter-timestamp {
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--accent-color);
+    background: rgba(37, 99, 235, 0.08);
+    padding: 2px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: background 0.15s;
+    user-select: none;
+}
+
+.chapter-timestamp:hover { background: rgba(37, 99, 235, 0.16); }
+
+.chapter-chevron {
+    flex-shrink: 0;
+    color: var(--text-color);
+    opacity: 0.3;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.15s;
+}
+
+.chapter-summary:hover .chapter-chevron { opacity: 0.6; }
+
+.chapter-chevron svg {
+    width: 15px;
+    height: 15px;
+    transition: transform 0.22s ease;
+}
+
+.chapter[open] > .chapter-summary .chapter-chevron svg { transform: rotate(180deg); }
+
+/* Content area — note: no overflow:hidden on parent now, so border-radius is clean */
+.chapter-content {
+    border-top: 1px solid var(--border-color);
+    padding: 0.5rem 1.25rem 0.25rem 1.25rem;
+    border-radius: 0 0 9px 9px;
+}
+
+
+/* ── 6. SPEAKER TURNS ────────────────────────────────── */
+/*
+   Simple border-left approach — no pseudo-elements, no absolute
+   positioning. Reliable across all browsers and doesn't interact
+   with the parent's clipping or border-radius.
+*/
+
+.speaker-turn {
+    border-left: 2px solid var(--border-color);
+    padding: 1rem 0.5rem 1rem 1.1rem;
+    margin: 0.6rem 0;
+}
+
+.speaker-turn:first-child { margin-top: 0; }
+.speaker-turn:last-child  { margin-bottom: 0; }
+
+/* Host: accent blue bar */
+.speaker-host {
+    border-left-color: var(--accent-color);
+}
+
+/* Guest: stays with the muted default border-color */
+.speaker-guest {
+    border-left-color: var(--border-color);
+}
+
+/* Speaker name label */
+.speaker-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.63rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    margin-bottom: 0.7rem;
+    line-height: 1;
+}
+
+.speaker-host .speaker-label {
+    color: var(--accent-color);
+}
+
+.speaker-guest .speaker-label {
+    color: var(--text-color);
+    opacity: 0.45;
+}
+
+/* Paragraphs — explicit styles that won't be overridden */
+.speaker-body {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: var(--text-color);
+}
+
+.speaker-body p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.speaker-body p:last-child {
+    margin-bottom: 0;
+}
+
+.speaker-body em     { font-style: italic; }
+.speaker-body strong { font-weight: 600; }
+
+
+/* ── 7. RESPONSIVE ───────────────────────────────────── */
+
+@media (max-width: 600px) {
+    .podcast-player-card {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    .podcast-artwork {
+        width: 148px;
+        height: 148px;
+    }
+
+    .podcast-player-body {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .podcast-episode-meta { align-items: center; }
+    .ctrl-speed           { margin-left: 0; }
+    .sticky-progress-track { width: 80px; }
+    .sticky-guest          { display: none; }
+    .chapter-title         { white-space: normal; }
+}
+
+
+/* ── 8. DARK MODE ────────────────────────────────────── */
+
+[data-theme="dark"] .podcast-artwork {
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.3),
+        0 12px 28px -4px rgba(37, 99, 235, 0.20);
+}
+
+[data-theme="dark"] .ctrl-play {
+    box-shadow: 0 4px 14px rgba(96, 165, 250, 0.30);
+}
+
+[data-theme="dark"] .ctrl-play:hover {
+    background: #2563eb;
+    box-shadow: 0 6px 20px rgba(96, 165, 250, 0.40);
+}
+
+[data-theme="dark"] .sticky-player {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="dark"] .sticky-play-btn {
+    box-shadow: 0 2px 8px rgba(96, 165, 250, 0.25);
+}
+
+[data-theme="dark"] .chapter.is-active {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.10);
+}
+
+[data-theme="dark"] .chapter-timestamp {
+    background: rgba(96, 165, 250, 0.10);
+}
+
+[data-theme="dark"] .chapter-timestamp:hover {
+    background: rgba(96, 165, 250, 0.18);
+}

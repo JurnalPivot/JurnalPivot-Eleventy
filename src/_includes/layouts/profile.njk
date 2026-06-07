@@ -16,9 +16,13 @@ cssFile: profile.css
 
     <!-- HERO: Monogram + Name + Role -->
     <header class="profile-hero">
-        <div class="profile-monogram" style="background-color: {{ currentAuthor.monogramColor }};">
-            {{ currentAuthor.monogram }}
-        </div>
+        {% if currentAuthor.photo %}
+            <img src="{{ currentAuthor.photo }}" alt="{{ authorName }}" class="profile-photo">
+        {% else %}
+            <div class="profile-monogram" style="background-color: {{ currentAuthor.monogramColor }};">
+                {{ currentAuthor.monogram }}
+            </div>
+        {% endif %}
         <div class="profile-identity">
             <span class="profile-role">{{ currentAuthor.role }}</span>
             <h1 class="profile-name">{{ authorName }}</h1>

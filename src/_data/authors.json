@@ -57,5 +57,18 @@
       { "label": "Instagram", "url": "https://www.instagram.com/diskurasi/" },
       { "label": "Substack", "url": "https://diskurasi.substack.com/" }
     ]
+    },
+  "Hikmah": {
+    "slug": "hikmah",
+    "bio": "Sosial dan politik dari lensa masyarakat muda.",
+    "photo": "/images/authors/hikmah.jpg",
+    "role": "Kontributor",
+    "monogram": "HM",
+    "monogramColor": "#556B2F",
+    "quote": "Kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
+    "longBio": "Hikmah adalah seorang mahasiswi di jurusan ilmu sosial yang tertarik pada kesenian visual, tulisan, dan segala bentuk ekspresi. Baginya, seni bukan sekadar minat di sela kuliah, melainkan lensa utama untuk membaca dunia. Ia sedang dalam perjalanan menyatukan dua hal yang ia cintai: ilmu sosial dan kesenian, karena ia percaya bahwa kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
+    "links": [
+      { "label": "Instagram", "url": "https://www.instagram.com/hikke1_/" }
+    ]
   }
 }

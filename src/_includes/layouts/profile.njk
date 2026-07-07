@@ -37,7 +37,13 @@ cssFile: profile.css
 
         <section class="profile-bio">
             <h2 class="profile-section-label">Tentang</h2>
-            <p>{{ currentAuthor.longBio }}</p>
+            {% if currentAuthor.longBio is string %}
+                <p>{{ currentAuthor.longBio }}</p>
+            {% else %}
+                {% for paragraph in currentAuthor.longBio %}
+                    <p>{{ paragraph }}</p>
+                {% endfor %}
+            {% endif %}
         </section>
 
         <aside class="profile-sidebar">

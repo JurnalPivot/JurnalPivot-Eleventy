@@ -49,6 +49,14 @@
     gap: 8px;
 }
 
+/* Affiliation label — e.g. "sebagai Penulis KataKarsa" */
+.author-affiliation {
+    font-size: 0.82em;
+    font-weight: 400;
+    opacity: 0.7;
+    font-style: italic;
+}
+
 /* Featured Image */
 .featured-image {
     width: 100%;

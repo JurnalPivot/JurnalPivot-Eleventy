@@ -57,7 +57,7 @@
       { "label": "Instagram", "url": "https://www.instagram.com/diskurasi/" },
       { "label": "Substack", "url": "https://diskurasi.substack.com/" }
     ]
-    },
+  },
   "Hikmah": {
     "slug": "hikmah",
     "bio": "Kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
@@ -69,6 +69,27 @@
     "longBio": "Hikmah adalah seorang mahasiswi di jurusan ilmu sosial yang tertarik pada kesenian visual, tulisan, dan segala bentuk ekspresi. Baginya, seni bukan sekadar minat di sela kuliah, melainkan lensa utama untuk membaca dunia. Ia sedang dalam perjalanan menyatukan dua hal yang ia cintai: ilmu sosial dan kesenian, karena ia percaya bahwa kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
     "links": [
       { "label": "Instagram", "url": "https://www.instagram.com/hikke1_/" }
+    ]
+  },
+  "Jennye Awuy": {
+    "slug": "jennye-awuy",
+    "affiliation": "KataKarsa",
+    "bio": "She simply loves to… explore new things.",
+    "photo": "/images/authors/jennye-awuy.png",
+    "role": "Kontributor",
+    "monogram": "JA",
+    "monogramColor": "#556B2F",
+    "quote": "Penulis di KataKarsa",
+    "longBio": [
+                "Jennye Awuy, one curious girl. Kalo ditanya hobinya apa… she would also be questioning the same thing. She simply loves to… explore new things.",
+                "But one thing that keeps her sane is writing. It’s the medium that fits her brain puzzle the most. It’s how she understands things. It’s how she regulates her emotions and well-being. It’s simply the thing that lets her sleep comfortably at night.",
+                "Jennye punya minat besar dalam industri media dan budaya, with a focus on politics and society. Inilah alasan di balik proses Jennye menulis di KataKarsa.",
+                "Feel free to reach her out. She loves it when someone has something for her to think about!"
+              ],
+    "links": [
+      { "label": "Substack", "url": "https://katakarsa.substack.com/" },
+      { "label": "Instagram", "url": "https://instagram.com/katakarsaid" },
+      { "label": "Email", "url": "mailto:katakarsaid@gmail.com" }
     ]
   }
 }

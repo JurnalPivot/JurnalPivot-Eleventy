@@ -3,7 +3,7 @@
     <span class="category-tag">{{ category }}</span>
     <h1>{{ title }}</h1>
     <div class="meta">
-        <span>By {{ author }}{% if articleAuthor and articleAuthor.affiliation %} <span class="author-affiliation">sebagai Penulis {{ articleAuthor.affiliation }}</span>{% endif %}</span> • <span>{{ date | readableDate }}</span>
+        <span>By {{ author }}{% if articleAuthor and articleAuthor.affiliation %} <span class="author-affiliation">sebagai penulis {{ articleAuthor.affiliation }}</span>{% endif %}</span> • <span>{{ date | readableDate }}</span>
     </div>
     {% if image %}
     <img src="{{ image }}" alt="{{ title }}" class="featured-image">

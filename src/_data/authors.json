@@ -44,10 +44,11 @@
       { "label": "Blog", "url": "https://kandanghantu.wordpress.com/" }
     ]
   },
-  "Diskurasi": {
-    "slug": "diskurasi",
+  "Patrick R.": {
+    "slug": "patrick-r",
+    "affiliation": "Diskurasi",
     "bio": "Sosial dan politik dari lensa masyarakat muda.",
-    "photo": "/images/authors/diskurasi.jpg",
+    "photo": "/images/authors/patrick-r.jpg",
     "role": "Kontributor",
     "monogram": "DS",
     "monogramColor": "#556B2F",

@@ -1,7 +1,7 @@
 ---
 title: "Garis Buram Kesatuan dan Keseragaman"
 date: 2026-05-16
-author: "Diskurasi"
+author: "Patrick R."
 category: "Politik"
 tags: articles
 layout: layouts/article.njk

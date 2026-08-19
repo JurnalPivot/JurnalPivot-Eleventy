@@ -92,5 +92,22 @@
       { "label": "Instagram", "url": "https://instagram.com/katakarsaid" },
       { "label": "Email", "url": "mailto:katakarsaid@gmail.com" }
     ]
+  },
+  "Jason Fernando": {
+    "slug": "jason-fernando",
+    "bio": "Global South and Sustainability Researcher",
+    "photo": "/images/authors/jason-fernando.png",
+    "role": "Kontributor",
+    "monogram": "JF",
+    "monogramColor": "#556B2F",
+    "quote": "Co-Founder Scriptum Consulting Firm",
+    "longBio": [
+                "Jason Fernando adalah lulusan Ilmu Hubungan Internasional dari Universitas Kristen Indonesia dan co-founder Scriptum Consulting Firm. Ia berfokus pada penelitian isu pembangunan di Global South dan sustainability.",
+                "Kalau ditanya kenapa dunia baru bergerak pada isu yang sudah lama diketahui semua orang, Jason bisa membahasnya lebih panjang dari yang orang minta. Kebiasaan ini tumbuh dari tumpukan buku dan artikel yang tidak pernah selesai dibacanya, lalu berakhir menjadi tulisan karena begitulah caranya menyimpan sesuatu supaya tidak menguap begitu saja dari kepala.",
+                "Punya bacaan menarik yang layak diperdebatkan? Jason selalu punya ruang untuk itu."
+              ],
+    "links": [
+      { "label": "Linkedin", "url": "https://www.linkedin.com/in/jason-fernando-467012216" }
+    ]
   }
 }

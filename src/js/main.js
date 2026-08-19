@@ -66,6 +66,7 @@ function updateIcons(theme) {
 
             // Wire up the visit button
             card.querySelector('.preview-visit').addEventListener('click', function (e) {
+                e.preventDefault();
                 e.stopPropagation();
                 window.open(href, '_blank', 'noopener,noreferrer');
             });

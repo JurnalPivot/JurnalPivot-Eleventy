@@ -4,13 +4,11 @@
     "bio": "Try again, fail again, fail better.",
     "photo": "/images/authors/jonathan.jpg",
     "role": "Editor",
-    "monogram": "JK",
     "monogramColor": "#2F4F4F",
     "quote": "Penggemar Samuel Beckett.",
     "longBio": "Jonathan Kay menulis tentang politik dan hubungan internasional, dengan minat yang cukup luas di filsafat, politik, dan sastra. Ia belajar Hubungan Internasional di Universitas Katolik Parahyangan. Saat ini, ia bekerja sebagai koresponden lepas untuk Southeast Asia Daily, melaporkan dinamika kawasan Asia Tenggara.",
     "links": [
-      { "label": "Instagram", "url": "joenathankay" },
-      { "label": "Twitter / X", "url": "" },
+      { "label": "Instagram", "url": "https://www.instagram.com/joenathankay/" },
       { "label": "Wordpress", "url": "https://jekachristian.wordpress.com" }
     ]
   },
@@ -19,7 +17,6 @@
     "bio": "Mencoba menulis meski karatan di kepala.",
     "photo": "/images/authors/reyner.jpg",
     "role": "Editor",
-    "monogram": "RT",
     "monogramColor": "#8B0000",
     "quote": "Berkontribusi minimal sebagai editor.",
     "longBio": "...",
@@ -29,12 +26,21 @@
       { "label": "LinkedIn", "url": "https://www.linkedin.com/in/reyner-purwanto/" }
     ]
   },
+  "Jouvanka E.": {
+    "slug": "jouvanka-e",
+    "bio": "Keengganan untuk berubah itu kadang bukan konservatif, tapi keledai.",
+    "photo": "",
+    "role": "Editor",
+    "monogramColor": "#B8860B",
+    "quote": "Keengganan untuk berubah itu kadang bukan konservatif, tapi keledai.",
+    "longBio": "...",
+    "links": []
+  },
   "Ria Dara": {
     "slug": "ria-dara",
     "bio": "Penulis opini, fiksi politik, dan puisi sajak bebas.",
     "photo": "/images/authors/ria.jpg",
     "role": "Kontributor",
-    "monogram": "RD",
     "monogramColor": "#556B2F",
     "quote": "...",
     "longBio": "RIA DARA merupakan nama pena dari Rizky Aditya Ramadhan. Ia menulis opini, fiksi politik, dan puisi sajak bebas (free verse). Karya terbarunya adalah Pipeline Era, sebuah kumpulan puisi berbahasa Inggris mengenai anti-intelektualisme yang diterbitkan melalui Ellunar Publisher. Pada Juli 2025, Ramadhan berhasil menyelesaikan studi sarjana program studi Hubungan Internasional di Universitas Katolik Parahyangan. Karya tulisnya pernah diterbitkan di Hey Young Writer, Solavivre Zine, Dyonzine, Jakarta Philosophy, LPM Mercusuar UNAIR, dan lain-lain.",
@@ -50,7 +56,6 @@
     "bio": "Sosial dan politik dari lensa masyarakat muda.",
     "photo": "/images/authors/patrick-r.jpg",
     "role": "Kontributor",
-    "monogram": "DS",
     "monogramColor": "#556B2F",
     "quote": "Sosial dan politik dari lensa masyarakat muda.",
     "longBio": "...",
@@ -64,7 +69,6 @@
     "bio": "Kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
     "photo": "/images/authors/hikmah.jpeg",
     "role": "Kontributor",
-    "monogram": "HM",
     "monogramColor": "#556B2F",
     "quote": "Kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
     "longBio": "Hikmah adalah seorang mahasiswi di jurusan ilmu sosial yang tertarik pada kesenian visual, tulisan, dan segala bentuk ekspresi. Baginya, seni bukan sekadar minat di sela kuliah, melainkan lensa utama untuk membaca dunia. Ia sedang dalam perjalanan menyatukan dua hal yang ia cintai: ilmu sosial dan kesenian, karena ia percaya bahwa kebenaran tentang masyarakat kadang lebih mudah dirasakan sebelum dijelaskan.",
@@ -78,7 +82,6 @@
     "bio": "She simply loves to… explore new things.",
     "photo": "/images/authors/jennye-awuy.png",
     "role": "Kontributor",
-    "monogram": "JA",
     "monogramColor": "#556B2F",
     "quote": "Penulis di KataKarsa",
     "longBio": [
@@ -98,7 +101,6 @@
     "bio": "Global South and Sustainability Researcher",
     "photo": "/images/authors/jason-fernando.png",
     "role": "Kontributor",
-    "monogram": "JF",
     "monogramColor": "#556B2F",
     "quote": "Co-Founder Scriptum Consulting Firm",
     "longBio": [
@@ -109,5 +111,16 @@
     "links": [
       { "label": "Linkedin", "url": "https://www.linkedin.com/in/jason-fernando-467012216" }
     ]
+  },
+  "Redaksi": {
+    "slug": "redaksi",
+    "profileUrl": "/pages/tentang/#redaksi",
+    "bio": "Tulisan dan produksi tim redaksi Jurnal Pivot.",
+    "photo": "",
+    "role": "Redaksi",
+    "monogramColor": "#1d4ed8",
+    "quote": "",
+    "longBio": "",
+    "links": []
   }
 }

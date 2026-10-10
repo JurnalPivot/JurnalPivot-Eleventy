@@ -3,8 +3,6 @@ title: "Amok: Sejarah Pemretelan"
 date: 2026-01-28
 author: "Jonathan K."
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 ***Amok adalah kata serapan bahasa Inggris dari bahasa Melayu. Ini mendefinisikan sebuah keadaan yang suram dan penuh dengan ungkapan emotif. Tulisan ini mengupas kecenderungan kontemporer terhadap amok.***
 

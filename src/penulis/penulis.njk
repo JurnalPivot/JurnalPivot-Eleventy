@@ -1,12 +1,13 @@
 ---
+# One profile page per author in src/_data/authors.json.
+# `profileAuthors` (defined in .eleventy.js) is the list of author names,
+# minus entries that have a `profileUrl` (e.g. "Redaksi"), which link elsewhere.
 pagination:
-  data: authors
+  data: profileAuthors
   size: 1
   alias: authorName
-  resolve: keys
 layout: layouts/profile.njk
-cssFile: profile.css
 permalink: "/penulis/{{ authors[authorName].slug }}/"
 eleventyComputed:
-  title: "{{ authorName }} — JurnalPivot"
+  title: "{{ authorName }}"
 ---

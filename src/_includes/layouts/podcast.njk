@@ -190,25 +190,9 @@ additionalCssFile: podcast.css
 
 {# ══════════════════════════════════════════
    SECTION 7 — Related Articles
-   Shows the 3 most recent articles regardless of category
-   (podcast category won't match regular article categories).
+   Same component as regular articles. "Podcast" episodes have no
+   same-category matches yet, so it falls back to the newest articles.
 ══════════════════════════════════════════ #}
-<section class="related-section">
-    <h3>Bacaan Terkait</h3>
-    <div class="related-grid">
-        {% set counter = 0 %}
-        {% for post in collections.articles | reverse %}
-            {% if post.url != page.url and counter < 3 %}
-                <div class="related-card">
-                    <a href="{{ post.url }}">
-                        <h4>{{ post.data.title }}</h4>
-                        <p>By {{ post.data.author }}</p>
-                    </a>
-                </div>
-                {% set counter = counter + 1 %}
-            {% endif %}
-        {% endfor %}
-    </div>
-</section>
+{% include "components/related-posts.njk" %}
 
 <script src="/js/podcast.js"></script>

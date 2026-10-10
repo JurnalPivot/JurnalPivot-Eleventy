@@ -159,83 +159,11 @@
     text-decoration-thickness: 2px;
     text-underline-offset: 3px;
     transition: text-decoration-color 0.15s;
-    /* Positioning context for the preview tooltip */
-    position: relative;
 }
 
 .prose a:hover {
     text-decoration-color: var(--link-underline-hover, #92400e);
     color: inherit;
-}
-
-/* --- Link preview tooltip --- */
-.prose a .link-preview {
-    display: none; /* shown by JS on hover */
-    position: absolute;
-    bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--preview-bg, #1c1917);
-    color: #e7e5e4;
-    border-radius: 6px;
-    padding: 0.6rem 0.9rem;
-    white-space: nowrap;
-    font-family: var(--font-sans, sans-serif);
-    font-size: 0.75rem;
-    line-height: 1.4;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-    z-index: 100;
-    pointer-events: auto;
-    /* Keep it from being too wide on long URLs */
-    max-width: 280px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* The little arrow pointing down from the card */
-.prose a .link-preview::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 5px solid transparent;
-    border-top-color: var(--preview-bg, #1c1917);
-}
-
-.prose a .link-preview .preview-domain {
-    display: block;
-    opacity: 0.6;
-    font-size: 0.7rem;
-    margin-bottom: 0.3rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-
-.prose a .link-preview .preview-visit {
-    display: inline-block;
-    margin-top: 0.45rem;
-    background: var(--link-underline, #b45309);
-    color: #fff;
-    padding: 3px 10px;
-    border-radius: 3px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.15s;
-}
-
-.prose a .link-preview .preview-visit:hover {
-    background: #92400e;
-}
-
-/* Dark mode adjustments */
-[data-theme="dark"] {
-    --link-underline: #d97706;
-    --link-underline-hover: #f59e0b;
-    --preview-bg: #0c0a09;
 }
 
 /* --- Footnote inline markers --- */

@@ -3,8 +3,6 @@ title: "Kripto-Fasisme adalah Akar Pemerintahan Prabowo"
 date: 2026-03-17
 author: "Ria Dara"
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 ***Jason Stanley mengidentifikasi ada sepuluh pilar yang menopang eksistensi fasisme di suatu lokalitas: (1) suatu idealisasi masa lalu bangsa yang dimitologisasi, (2) propaganda masif yang merendahkan supremasi hukum, (3) kebencian terhadap kalangan intelektual dan aktivitasnya, (4) kebohongan yang diproduksi dan direproduksi masal, (5) upaya untuk memperkokoh suatu konsepsi hirarki yang berbasis pada alam, (6) kecenderungan korbanisasi kalangan dominan di media dan diskursus publik, (7) obsesi esensialis yang mengkategorisasi masyarakat menjadi “para kriminal” dan “para orang biasa”, (8) kecemasan pada interaksi dan perilaku seksual di masyarakat yang menyimpang pandangan kalangan dominan, (9) kebijakan yang dibingkaikan dan dijustifikasikan untuk melindungi masyarakat kecil dan pedesaan dari ancaman dan pencemaran dari luar, (10) rekonfigurasi tatanan masyarakat agar mendorong privilese kalangan dominan selagi mengalienasi dan mengucilkan anggota masyarakat yang berada di luar kalangan tersebut.[^1]***
 

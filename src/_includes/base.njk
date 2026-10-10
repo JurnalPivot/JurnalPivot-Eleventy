@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }}</title>
+    <!-- Tab title: "Article Title — JurnalPivot"; the home page shows "JurnalPivot — tagline" -->
+    <title>{% if title and page.url != "/" %}{{ title }} — {{ site.name }}{% else %}{{ site.name }} — {{ site.tagline }}{% endif %}</title>
+    {% if noindex %}<meta name="robots" content="noindex">{% endif %}
     <link rel="icon" href="/images/icons/favicon.png" type="image/png">
+
+    <!-- Theme: applied before the page is drawn, so there is no light-mode flash.
+         Uses the reader's saved choice, otherwise their device setting. -->
+    <script>
+        (function () {
+            var theme = null;
+            try { theme = localStorage.getItem('theme'); } catch (e) {}
+            if (theme !== 'dark' && theme !== 'light') {
+                theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,16 +42,16 @@
 <!-- Header Navigation -->
   <header class="site-header">
       <div class="container header-inner">
-          <a href="/" class="logo">JurnalPivot</a>
-          
+          <a href="/" class="logo">{{ site.name }}</a>
+
           <nav class="nav-menu">
               <a href="/pages/submisi">Submisi</a>
               <a href="/pages/tentang">Tentang</a>
-              <button id="theme-toggle" aria-label="Toggle Dark Mode">
-                  <!-- Sun Icon -->
-                  <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                  <!-- Moon Icon -->
-                  <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
+              <button id="theme-toggle" type="button" aria-label="Ganti mode gelap/terang">
+                  <!-- Sun Icon (shown in light mode; CSS swaps the icons) -->
+                  <svg class="icon sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                  <!-- Moon Icon (shown in dark mode) -->
+                  <svg class="icon moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" /></svg>
               </button>
           </nav>
       </div>
@@ -49,10 +64,12 @@
 <!-- Footer Navigation -->
   <footer class="site-footer">
       <div class="container">
-          <p>&copy; 2025 JurnalPivot. Merakit dan Menulis Ide.</p>
+          <!-- The year is filled in automatically at every build -->
+          <p>&copy; {% year %} {{ site.name }}. {{ site.tagline }}.</p>
           <div class="social-links">
-              <a href="https://www.instagram.com/jurnal.pivot/">Instagram</a>
-              <a href="https://x.com/JurnalPivot">Twitter</a>
+              {% for link in site.social %}
+              <a href="{{ link.url }}">{{ link.label }}</a>
+              {% endfor %}
           </div>
       </div>
   </footer>

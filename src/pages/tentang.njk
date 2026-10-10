@@ -1,8 +1,9 @@
 ---
 layout: base.njk
-title: Tentang JurnalPivot
+title: Tentang
 cssFile: tentang.css
 ---
+{% from "components/avatar.njk" import avatar %}
 
 <div class="about-container">
 
@@ -37,49 +38,31 @@ cssFile: tentang.css
     </section>
 
     <!-- 3. THE EDITORS (The Masthead) -->
-    <section class="editors-section">
+    <!-- id="redaksi" is the link target for "Redaksi" (see profileUrl in authors.json) -->
+    <section class="editors-section" id="redaksi">
         <div class="section-label">
             <h3>Redaksi</h3>
         </div>
 
+        <!-- Generated from src/_data/authors.json: every author with "role": "Editor",
+             in the order they appear in that file. -->
         <div class="editors-grid">
-            
-            <!-- Editor 1 (Anonymous/Initials) -->
+            {% for name, editor in authors %}
+            {% if editor.role == "Editor" %}
             <div class="editor-card">
-                <a href="/penulis/jonathan-k/" class="editor-link-wrapper">
-                    <div class="editor-monogram" style="background-color: #2F4F4F;">JK</div> <!-- Dark Slate Gray -->
+                <a href="{{ editor | authorUrl }}" class="editor-link-wrapper">
+                    {{ avatar(name, editor, "editor-monogram") }}
                     <div class="editor-info">
-                        <h4>Jonathan K.</h4>
-                        <span class="role">Editor</span>
-                        <p class="editor-quote">"Penggemar Samuel Beckett."</p>
+                        <h4>{{ name }}</h4>
+                        <span class="role">{{ editor.role }}</span>
+                        {% if editor.quote %}
+                        <p class="editor-quote">"{{ editor.quote }}"</p>
+                        {% endif %}
                     </div>
                 </a>
             </div>
-
-            <!-- Editor 2 -->
-            <div class="editor-card">
-                <a href="/penulis/reyner-t/" class="editor-link-wrapper">
-                    <div class="editor-monogram" style="background-color: #8B0000;">RT</div> <!-- Dark Red -->
-                    <div class="editor-info">
-                        <h4>Reyner T.</h4>
-                        <span class="role">Editor</span>
-                        <p class="editor-quote">"Berkontribusi minimal sebagai editor."</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Editor 3 -->
-            <div class="editor-card">
-                <a href="/penulis/jouvanka-e/" class="editor-link-wrapper">
-                    <div class="editor-monogram" style="background-color: #B8860B;">JE</div> <!-- Dark Goldenrod -->
-                    <div class="editor-info">
-                        <h4>Jouvanka E.</h4>
-                        <span class="role">Editor</span>
-                        <p class="editor-quote">"Keengganan untuk berubah itu kadang bukan konservatif, tapi keledai."</p>
-                    </div>
-                </a>
-            </div>
-
+            {% endif %}
+            {% endfor %}
         </div>
     </section>
 
@@ -93,7 +76,7 @@ cssFile: tentang.css
             </p>
             <div class="contact-links">
                 <a href="/pages/submisi" class="btn-primary">Kirim Tulisan</a>
-                <a href="https://jurnalpivot.carrd.co/" class="btn-text">Kontak Umum</a>
+                <a href="{{ site.contactUrl }}" class="btn-text">Kontak Umum</a>
             </div>
         </div>
     </section>

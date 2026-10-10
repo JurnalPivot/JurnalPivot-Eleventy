@@ -1,19 +1,20 @@
 {
   "name": "jurnalpivot_eleventy_final",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "description": "JurnalPivot website, built with Eleventy (11ty)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "eleventy --serve",
+    "build": "npm run clean && eleventy",
+    "clean": "node -e \"require('fs').rmSync('_site', { recursive: true, force: true })\""
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2"
   },
   "dependencies": {
     "luxon": "^3.7.2",
+    "markdown-it": "^14.1.0",
     "markdown-it-footnote": "^4.0.0"
   }
 }

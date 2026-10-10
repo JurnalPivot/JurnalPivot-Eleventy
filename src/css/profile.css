@@ -37,20 +37,6 @@
     margin-bottom: 3rem;
 }
 
-.profile-monogram {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: var(--font-serif, serif);
-    font-weight: bold;
-    font-size: 2rem;
-    flex-shrink: 0;
-}
-
 .profile-photo {
     width: 96px;
     height: 96px;
@@ -246,6 +232,14 @@
 .email-copy-btn:hover .email-copy-hint {
     opacity: 0.6;
     max-width: 240px;
+}
+
+/* Touch screens have no hover: keep the address visible */
+@media (hover: none) {
+    .email-copy-hint {
+        opacity: 0.6;
+        max-width: 240px;
+    }
 }
 
 /* Confirmed state — JS adds .copied class to the button */

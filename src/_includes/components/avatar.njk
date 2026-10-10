@@ -1,0 +1,20 @@
+{#
+  Author avatar, used by the author box, profile pages and the Tentang masthead.
+
+  Usage:
+    {% from "components/avatar.njk" import avatar %}
+    {{ avatar(authorName, authors[authorName], "author-photo") }}
+
+  - If the author's `photo` file exists in src/, the photo is shown.
+  - Otherwise (no `photo`, or the file is missing) a coloured circle with the
+    capital first letter of the name is shown. The colour is `monogramColor`
+    from authors.json, or the site accent colour if that is empty.
+#}
+{% macro avatar(name, author, cssClass) %}
+  {%- set photo = author.photo | existingFile if author else "" -%}
+  {%- if photo -%}
+    <img src="{{ photo }}" alt="{{ name }}" class="avatar {{ cssClass }}">
+  {%- else -%}
+    <span class="avatar avatar-letter {{ cssClass }}"{% if author and author.monogramColor %} style="background-color: {{ author.monogramColor }};"{% endif %} aria-hidden="true">{{ name | initial }}</span>
+  {%- endif -%}
+{% endmacro %}

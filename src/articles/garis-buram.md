@@ -3,8 +3,6 @@ title: "Garis Buram Kesatuan dan Keseragaman"
 date: 2026-05-16
 author: "Patrick R."
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 	  
 ***Sebagai negara yang penuh dengan keberagaman, konsep kesatuan (*unity*) dan keseragaman (*uniformity*) sering kali dipakai bolak-balik oleh masyarakat Indonesia. Padahal, keduanya memiliki definisi yang jauh berseberangan. Kesatuan sendiri adalah penggabungan elemen-elemen yang berbeda menjadi satu kesatuan yang harmonis. Sedangkan keseragaman mengacu pada elemen yang identik atau sama persis, tanpa variasi.***

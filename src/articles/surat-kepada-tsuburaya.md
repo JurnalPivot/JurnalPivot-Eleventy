@@ -3,7 +3,6 @@ title: "Surat kepada Tsuburaya"
 date: 2026-03-30
 author: "Reyner T."
 category: "Budaya"
-tags: articles
 layout: layouts/immersive.njk
 lede: "Ultraman adalah drama anak-anak yang mengalami transformasi dari medium simbolisme makna menjadi film laga kekanak-kanakan."
 draft: true

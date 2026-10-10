@@ -3,8 +3,6 @@ title: "Mengapa Masyarakat Indonesia Semakin Sering Turun ke Jalan?"
 date: 2026-07-07
 author: "Jennye Awuy"
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 
 ***Terdapat tiga aksi masyarakat yang paling menggelegar di kalangan masyarakat sipil pada periode pemerintahan yang sedang kita geluti ini, yakni Aksi “Peringatan Darurat” pada Agustus 2024, Aksi “Indonesia Gelap” pada Agustus-September 2025, dan di tahun 2026 ini dengan berbagai aksi mahasiswa yang meramaikan jalanan Jakarta Pusat pada pertengahan bulan Juni kemarin.***

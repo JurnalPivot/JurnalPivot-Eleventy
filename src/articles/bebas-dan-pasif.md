@@ -3,8 +3,6 @@ title: "Bebas dan Pasif"
 date: 2026-04-14
 author: "Ria Dara"
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 ***Kenaikan Indonesia sebagai Presiden Dewan HAM PBB (UNHRC) memunculkan banyak kekhawatiran dan ekspektasi yang justru terpasang sebagai ranjau pada performa Hak Asasi Manusia sang Republik.***
 

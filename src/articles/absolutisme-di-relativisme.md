@@ -3,8 +3,6 @@ title: "Absolutisme di Tengah Relativisme"
 date: 2026-01-28
 author: "Reyner T."
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 ***Ruang kelas adalah perpaduan ruang publik dan privat, dimana kegelisahan isu-isu dapat didiskusikan dan diperdebatkan dengan etika privat yang lepas dari skrutinitas pada umumnya. Nyatanya ruang kelas sekarang menjadi semakin sempit dan kaku dalam pembahasan.***
 

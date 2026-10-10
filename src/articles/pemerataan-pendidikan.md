@@ -3,8 +3,6 @@ title: "Pemerataan Pendidikan dan Persoalan Kelayakan"
 date: 2026-06-08
 author: "Hikmah"
 category: "Sosial"
-tags: articles
-layout: layouts/article.njk
 ---
 
 ***Kita terlalu lama berdebat soal angka partisipasi dan jumlah gedung, sementara membiarkan standar ‘layak’ itu sendiri menggantung tanpa definisi yang serius. Negara mengklaim pendidikan sudah merata karena sekolah tersebar. Tetapi merata dalam hitungan titik di peta bukan berarti merata dalam kualitas yang diterima anak. Dan kesenjangan antara dua hal ini paling terasa tajam di daerah Tertinggal, Terdepan, Terluar (3T). Di tempat inilah anak-anak kerap dipaksa bersyukur atas pendidikan yang mungkin tidak akan diterima jika standar yang sama diterapkan di Jakarta.***

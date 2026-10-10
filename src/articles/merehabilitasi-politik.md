@@ -3,8 +3,6 @@ title: "Merehabilitasi Politik"
 date: 2026-02-13
 author: "Jonathan K."
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 
 ***Apa makna permusuhan dalam politik dewasa ini? Masa kiwari republik ini selalu mengandaikan bahwa satu bangsa harus bersaudara. Mengapa ini bermasalah? Apa maknanya bagi kita sebagai warga negara?***

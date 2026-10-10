@@ -8,6 +8,10 @@
     --font-serif: 'EB Garamond', Georgia, serif;
     --font-sans: 'Inter', system-ui, sans-serif;
     --container-width: 800px;
+    /* Article links + link preview card */
+    --link-underline: #b45309;
+    --link-underline-hover: #92400e;
+    --preview-bg: #1c1917;
 }
 
 /* Dark Mode Theme */
@@ -17,6 +21,9 @@
     --card-bg: #1a1a1a;
     --accent-color: #60a5fa;
     --border-color: #333333;
+    --link-underline: #d97706;
+    --link-underline-hover: #f59e0b;
+    --preview-bg: #0c0a09;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -70,6 +77,11 @@ a:hover { color: var(--accent-color); }
 }
 .icon { width: 20px; height: 20px; }
 
+/* Sun in light mode, moon in dark mode (no JavaScript needed) */
+.icon.moon { display: none; }
+[data-theme="dark"] .icon.sun { display: none; }
+[data-theme="dark"] .icon.moon { display: block; }
+
 
 /* --- Footer --- */
 .site-footer {
@@ -83,6 +95,89 @@ a:hover { color: var(--accent-color); }
 }
 .social-links { margin-top: 1rem; display: flex; gap: 1rem; justify-content: center; }
 [data-theme="dark"] .site-footer { opacity: 0.5; }
+
+/* --- Author avatar ---
+   Shared by the author box, profile pages and the Tentang masthead
+   (components/avatar.njk). Size comes from the page-specific class
+   (.author-photo, .profile-photo, .editor-monogram). */
+.avatar {
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+.avatar-letter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1;
+    user-select: none;
+}
+.author-photo.avatar-letter { font-size: 2.2rem; }
+.profile-photo.avatar-letter { font-size: 2.8rem; }
+
+/* --- Link preview card ---
+   One shared card, created and positioned by main.js
+   when hovering a link inside an article. */
+.link-preview {
+    display: none;
+    position: absolute;
+    z-index: 100;
+    max-width: 280px;
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    background: var(--preview-bg);
+    color: #e7e5e4;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+.link-preview.is-visible { display: block; }
+
+/* The little arrow pointing at the link */
+.link-preview::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: var(--arrow-x, 50%);
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: var(--preview-bg);
+}
+.link-preview.is-below::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--preview-bg);
+}
+
+.link-preview .preview-domain {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0.7;
+    font-size: 0.7rem;
+}
+.link-preview .preview-visit {
+    margin-top: 0.45rem;
+    padding: 3px 10px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--link-underline);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.link-preview .preview-visit:hover { background: var(--link-underline-hover); }
 
 /* --- Mobile Responsive --- */
 @media (max-width: 600px) {

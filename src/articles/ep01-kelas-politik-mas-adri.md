@@ -3,7 +3,6 @@ title: "EP 01: Kelas Politik Mas Adri"
 date: 2026-05-23
 author: "Redaksi"
 category: "Podcast"
-tags: articles
 layout: layouts/podcast.njk
 templateEngineOverride: njk,md
 

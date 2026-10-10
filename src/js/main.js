@@ -1,153 +1,204 @@
-const toggleButton = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-const sunIcon = document.querySelector('.sun');
-const moonIcon = document.querySelector('.moon');
+/* ---------------------------------------------------
+   Dark / light mode toggle
+   The starting theme is already set by the small script
+   in <head> (base.njk), so the page never flashes.
+   This part only handles clicks. The sun/moon icons are
+   swapped by CSS (global.css), not by JavaScript.
+--------------------------------------------------- */
+(function () {
+    var root = document.documentElement;
+    var toggleButton = document.getElementById('theme-toggle');
+    if (!toggleButton) return;
 
-// Check for saved user preference
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    htmlElement.setAttribute('data-theme', savedTheme);
-    updateIcons(savedTheme);
-}
-
-toggleButton.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    
-    htmlElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    updateIcons(newTheme);
-});
-
-function updateIcons(theme) {
-    if (theme === 'dark') {
-        sunIcon.style.display = 'none';
-        moonIcon.style.display = 'block';
-    } else {
-        sunIcon.style.display = 'block';
-        moonIcon.style.display = 'none';
+    function currentTheme() {
+        return root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
     }
-}
+
+    function applyTheme(theme) {
+        root.setAttribute('data-theme', theme);
+        toggleButton.setAttribute('aria-pressed', String(theme === 'dark'));
+    }
+
+    applyTheme(currentTheme());
+
+    toggleButton.addEventListener('click', function () {
+        var newTheme = currentTheme() === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
+        try { localStorage.setItem('theme', newTheme); } catch (e) { /* private mode: not saved */ }
+    });
+
+    // If the reader never picked a theme, follow their device when it changes.
+    if (window.matchMedia) {
+        var media = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function (e) {
+            var saved = null;
+            try { saved = localStorage.getItem('theme'); } catch (err) {}
+            if (!saved) applyTheme(e.matches ? 'dark' : 'light');
+        };
+        if (media.addEventListener) media.addEventListener('change', onChange);
+        else if (media.addListener) media.addListener(onChange);
+    }
+}());
 
 /* ---------------------------------------------------
-   Link preview tooltips
-   Injects a small card above hovered links in .prose
-   and .im-prose showing the destination domain + a
-   visit button. Footnote anchor links are excluded.
+   Link preview card
+   Hovering a link inside an article (.prose / .im-prose)
+   shows a small card above it with the destination
+   domain and a "Buka di tab baru" button.
+
+   - One shared card lives at the end of <body>, NOT
+     inside the link, so screen readers read the link
+     text only and clicking the link works normally.
+   - Only on devices with a mouse. On phones/tablets a
+     tap just follows the link.
+   - Footnote (#...) and email links are skipped.
    Zero external dependencies, no fetch calls.
 --------------------------------------------------- */
 (function () {
-    // Only run on article/immersive pages
-    var containers = document.querySelectorAll('.prose, .im-prose');
-    if (!containers.length) return;
+    var hasMouse = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!hasMouse) return;
 
-    containers.forEach(function (container) {
-        var links = container.querySelectorAll('a[href]');
+    var links = document.querySelectorAll('.prose a[href], .im-prose a[href]');
+    if (!links.length) return;
 
-        links.forEach(function (link) {
-            var href = link.getAttribute('href');
+    var card = document.createElement('div');
+    card.className = 'link-preview';
+    card.setAttribute('aria-hidden', 'true');
+    card.innerHTML =
+        '<span class="preview-domain"></span>' +
+        '<button type="button" class="preview-visit" tabindex="-1">Buka di tab baru ↗</button>';
+    document.body.appendChild(card);
 
-            // Skip: footnote anchors, backref anchors, empty
-            if (!href || href.startsWith('#') || href.startsWith('mailto:')) return;
+    var domainLabel = card.querySelector('.preview-domain');
+    var visitButton = card.querySelector('.preview-visit');
+    var activeHref = null;
+    var hideTimer = null;
 
-            // Extract a clean display label from the URL
-            var displayText = href;
-            try {
-                var url = new URL(href, window.location.href);
-                displayText = url.hostname.replace(/^www\./, '');
-            } catch (e) { /* relative URL, keep as-is */ }
+    function hide() {
+        card.classList.remove('is-visible');
+        activeHref = null;
+    }
 
-            // Build the preview card
-            var card = document.createElement('span');
-            card.className = 'link-preview';
-            card.innerHTML =
-                '<span class="preview-domain">' + displayText + '</span>' +
-                '<span class="preview-visit">Buka →</span>';
+    function scheduleHide() {
+        clearTimeout(hideTimer);
+        // Small delay so the mouse can travel from the link into the card
+        hideTimer = setTimeout(hide, 150);
+    }
 
-            // Wire up the visit button
-            card.querySelector('.preview-visit').addEventListener('click', function (e) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(href, '_blank', 'noopener,noreferrer');
-            });
+    function show(link, event) {
+        clearTimeout(hideTimer);
 
-            link.appendChild(card);
+        var url;
+        try { url = new URL(link.getAttribute('href'), window.location.href); }
+        catch (e) { return; }
 
-            // Show/hide
-            var hideTimer;
+        activeHref = url.href;
+        domainLabel.textContent = url.origin === window.location.origin
+            ? 'JurnalPivot' + url.pathname
+            : url.hostname.replace(/^www\./, '');
 
-            link.addEventListener('mouseenter', function () {
-                clearTimeout(hideTimer);
-                card.style.display = 'block';
-            });
+        // A link can wrap over several lines: use the line under the mouse.
+        var rects = link.getClientRects();
+        if (!rects.length) return;
+        var rect = rects[0];
+        if (event && rects.length > 1) {
+            for (var i = 0; i < rects.length; i++) {
+                if (event.clientY >= rects[i].top && event.clientY <= rects[i].bottom) { rect = rects[i]; break; }
+            }
+        }
 
-            link.addEventListener('mouseleave', function () {
-                // Small delay so user can move mouse into the card itself
-                hideTimer = setTimeout(function () {
-                    card.style.display = 'none';
-                }, 120);
-            });
+        card.classList.add('is-visible');
+        var gap = 10;
+        var margin = 8;
+        var cardWidth = card.offsetWidth;
+        var cardHeight = card.offsetHeight;
+        var viewportWidth = document.documentElement.clientWidth;
+        var linkCentre = rect.left + rect.width / 2;
 
-            card.addEventListener('mouseenter', function () {
-                clearTimeout(hideTimer);
-            });
+        var left = Math.max(margin, Math.min(linkCentre - cardWidth / 2, viewportWidth - cardWidth - margin));
+        var top = rect.top - cardHeight - gap;
+        var below = top < margin; // not enough room above: show it under the link
+        if (below) top = rect.bottom + gap;
 
-            card.addEventListener('mouseleave', function () {
-                hideTimer = setTimeout(function () {
-                    card.style.display = 'none';
-                }, 120);
-            });
-        });
+        card.classList.toggle('is-below', below);
+        card.style.left = (left + window.scrollX) + 'px';
+        card.style.top = (top + window.scrollY) + 'px';
+        card.style.setProperty('--arrow-x', Math.max(12, Math.min(linkCentre - left, cardWidth - 12)) + 'px');
+    }
+
+    links.forEach(function (link) {
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) === '#' || /^(mailto|tel):/i.test(href)) return;
+        link.addEventListener('mouseenter', function (e) { show(link, e); });
+        link.addEventListener('mouseleave', scheduleHide);
     });
+
+    card.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+    card.addEventListener('mouseleave', scheduleHide);
+
+    visitButton.addEventListener('click', function () {
+        if (activeHref) window.open(activeHref, '_blank', 'noopener,noreferrer');
+        hide();
+    });
+
+    window.addEventListener('resize', hide);
 }());
 
 /* ---------------------------------------------------
    Email copy-to-clipboard
-   Targets any .email-copy-btn on the page.
-   Reads the address from data-email, copies it,
-   then briefly shows a "Tersalin!" confirmation.
+   Targets any .email-copy-btn on the page (profile pages).
+   Reads the address from data-email, copies it, briefly
+   shows "Tersalin!", then shows the email address again.
+   If copying is blocked, the address stays visible so it
+   can be copied by hand.
 --------------------------------------------------- */
-document.querySelectorAll('.email-copy-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        var email = btn.getAttribute('data-email');
-        if (!email) return;
+(function () {
+    function copyText(text) {
+        function legacyCopy() {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            var ok = false;
+            try { ok = document.execCommand('copy'); } catch (e) {}
+            document.body.removeChild(ta);
+            if (!ok) throw new Error('copy failed');
+        }
 
-        // Use the modern clipboard API where available,
-        // fall back to the legacy execCommand approach.
-        var doCopy = navigator.clipboard
-            ? navigator.clipboard.writeText(email)
-            : Promise.resolve().then(function() {
-                var ta = document.createElement('textarea');
-                ta.value = email;
-                ta.style.position = 'fixed';
-                ta.style.opacity = '0';
-                document.body.appendChild(ta);
-                ta.select();
-                document.execCommand('copy');
-                document.body.removeChild(ta);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text).catch(function () {
+                legacyCopy();
             });
+        }
+        return Promise.resolve().then(legacyCopy);
+    }
 
-        doCopy.then(function() {
-            // Swap hint text to confirmation
-            var hint = btn.querySelector('.email-copy-hint');
-            var originalText = hint.textContent;
-            hint.textContent = 'Tersalin!';
-            btn.classList.add('copied');
+    document.querySelectorAll('.email-copy-btn').forEach(function (btn) {
+        var hint = btn.querySelector('.email-copy-hint');
+        var email = btn.getAttribute('data-email');
+        if (!hint || !email) return;
 
-            // Reset after 2 seconds
-            setTimeout(function() {
-                hint.textContent = originalText;
-                btn.classList.remove('copied');
-            }, 2000);
-        }).catch(function() {
-            // If clipboard is blocked (e.g. HTTP), fall back gracefully
-            var hint = btn.querySelector('.email-copy-hint');
-            hint.textContent = email;
+        var resetTimer = null;
+
+        function showMessage(message, duration) {
+            clearTimeout(resetTimer);
+            hint.textContent = message;
             btn.classList.add('copied');
-            setTimeout(function() {
-                hint.textContent = 'klik untuk salin';
+            resetTimer = setTimeout(function () {
+                hint.textContent = email;   // always back to the email address
                 btn.classList.remove('copied');
-            }, 3000);
+            }, duration);
+        }
+
+        btn.addEventListener('click', function () {
+            copyText(email).then(function () {
+                showMessage('Tersalin!', 2000);
+            }).catch(function () {
+                showMessage(email, 4000);
+            });
         });
     });
-});
+}());

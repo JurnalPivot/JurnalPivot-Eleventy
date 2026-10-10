@@ -3,8 +3,6 @@ title: "Alternatif Perubahan dalam Fridays for Future"
 date: 2026-08-19
 author: "Jason Fernando"
 category: "Politik"
-tags: articles
-layout: layouts/article.njk
 ---
 
 ***Pada 2018, seorang remaja Swedia berusia lima belas tahun memilih duduk sendirian di depan gedung parlemen alih-alih masuk kelas. Tujuh tahun berselang, aksi soliter itu telah menjelma gerakan global yang turut mendorong lahirnya putusan Mahkamah Internasional serta resolusi Majelis Umum PBB perihal iklim. Tulisan ini menelusuri bagaimana keresahan seorang individu mampu menggoyang forum hukum sekaligus forum politik tertinggi dunia.***
